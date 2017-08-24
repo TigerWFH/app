@@ -17,6 +17,7 @@ module.exports = {
   },
   output: {
     filename: '[name].js',
+    chunkFilename: 'modules/[id].[name].chunk.js',
     path: buildPath
   },
   module: {
@@ -28,7 +29,7 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: ['env', 'react'],
-            plugins: []
+            plugins: ['syntax-dynamic-import']
           }
         }]
       },
