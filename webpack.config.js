@@ -22,9 +22,15 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.js(x)?$/,
         include: [srcPath],
-        use: ['babel-loader']
+        use: [{
+          loader: 'babel-loader',
+          options: {
+            presets: ['env', 'react'],
+            plugins: []
+          }
+        }]
       },
       {
         test: /\.less$/,
