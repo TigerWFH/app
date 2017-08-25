@@ -29,7 +29,9 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: ['env', 'react'],
-            plugins: ['syntax-dynamic-import']
+            plugins: ['syntax-dynamic-import',
+              'transform-class-properties',
+              'transform-runtime']
           }
         }]
       },
