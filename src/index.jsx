@@ -8,8 +8,9 @@ import { Provide } from 'react-redux';
 import { Route, HashRouter as Router, HashHistory } from 'react-router-dom';
 
 // pages
+import AsyncRoute from './common';
 import Demo from './pages/demo';
-import First from './pages/first';
+let First = AsyncRoute(() => import('./pages/first'));
 
 function App(props) {
   return (
