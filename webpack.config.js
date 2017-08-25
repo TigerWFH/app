@@ -28,10 +28,13 @@ module.exports = {
         use: [{
           loader: 'babel-loader',
           options: {
-            presets: ['env', 'react'],
+            presets: [
+              'env',
+              'react'],
             plugins: ['syntax-dynamic-import',
               'transform-class-properties',
-              'transform-runtime']
+              'transform-runtime',
+              'transform-object-rest-spread']
           }
         }]
       },

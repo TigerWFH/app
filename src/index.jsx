@@ -1,11 +1,11 @@
 // libs
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { Route, HashRouter as Router } from 'react-router-dom';
 
 import * as css from './index.less';
-
-import { Provide } from 'react-redux';
-import { Route, HashRouter as Router, HashHistory } from 'react-router-dom';
+import store from './store';
 
 // pages
 import AsyncRoute from './common';
@@ -20,11 +20,14 @@ function App(props) {
   )
 }
 
-let elem = <Router>
-  <App>
-    <Route exact strict path="/" component={Demo}></Route>
-    <Route exact strict path="/first" component={First}></Route>
-  </App>
-</Router>
+let elem = <Provider store={store} >
+  <Router>
+    <App>
+      <Route exact strict path="/" component={Demo}></Route>
+      <Route exact strict path="/first" component={First}></Route>
+    </App>
+  </Router>
+</Provider >
+
 
 ReactDOM.render(elem, document.getElementById('main'));
