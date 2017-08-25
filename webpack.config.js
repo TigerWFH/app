@@ -13,7 +13,7 @@ let env = process.env.NODE_ENV === 'develop' ?
   'develop' : 'production';
 module.exports = {
   entry: {
-    index: path.join(__dirname, 'src/index.js')
+    index: path.join(__dirname, 'src/index.jsx')
   },
   output: {
     filename: '[name].js',
