@@ -4,7 +4,7 @@ import * as Actions from '../actions';
 
 function mapStateToProps(state, ownProps) {
     let { first } = state;
-    return first;
+    return first || {};
 }
 function mapDispatchToProps(dispatch, ownProps) {
     return {
