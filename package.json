@@ -4,6 +4,8 @@
   "description": "js前端自动化工程",
   "main": "index.js",
   "scripts": {
+    "server": "webpack-dev-server --open",
+    "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -25,6 +27,7 @@
     "clean-webpack-plugin": "^0.1.16",
     "css-loader": "^0.28.5",
     "extract-text-webpack-plugin": "^3.0.0",
+    "file-loader": "^0.11.2",
     "html-webpack-plugin": "^2.30.1",
     "less-loader": "^4.0.5",
     "style-loader": "^0.18.2",
