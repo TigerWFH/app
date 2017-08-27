@@ -8,7 +8,7 @@ import * as css from './index.less';
 import store from './store';
 
 // pages
-import AsyncRoute from './common';
+import AsyncRoute from './common/asyncUtils';
 import Demo from './pages/demo';
 let First = AsyncRoute(() => import('./pages/first'), 'first', ()=>import('./pages/first/reducers'));
 

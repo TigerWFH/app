@@ -1,5 +1,23 @@
 import React, { Component } from 'react';
-import store, { injectAsyncReducer } from '../store';
+import store from '../../store';
+import createReducers from '../../reducer';
+
+
+/**
+ * @desc 为延迟加载的module注入reducer
+ * @param {*} store 全局store
+ * @param {*} name reducer名或reducer map
+ * @param {*} asyncReducer reducer
+ */
+export function injectAsyncReducer(store, name, asyncReducer) {
+    if (typeof name === 'string' && typeof asyncReducer === 'function') {
+        store.asyncReducers[name] = asyncReducer;
+    }
+    if (Object.prototype.toString.call(name) === '[object Object]') {
+        store.asyncReducers = name;
+    }
+    store.replaceReducer(createReducers(store.asyncReducers));
+}
 
 /**
  * @desc 创建动态路由
