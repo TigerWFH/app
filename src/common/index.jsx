@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import store, { injectAsyncReducer } from '../store';
 
-export default (getComponent, getReducers) => {
+/**
+ * @desc 创建动态路由
+ * @getComponent {function} 获取组件
+ * @reducerName  {string | object} reducer名字或者是一个reducermap
+ * @getReducers  {function} 异步加载的reducers
+ */ 
+export default (getComponent, reducerName, getReducers) => {
     return class AsyncRoute extends Component {
         static Component = null;
         static ReducersLoaded = false;
@@ -9,47 +15,58 @@ export default (getComponent, getReducers) => {
             Component: AsyncRoute.Component,
             ReducersLoaded: AsyncRoute.ReducersLoaded
         };
-
+        _module(mod) {
+            if (!mod) {
+                return null;
+            }
+            return mod.default || mod;
+        }
         componentWillMount() {
             const { Component, ReducersLoaded } = this.state;
             let shouldLoadReducers = !ReducersLoaded && getReducers;
-            // if (!Component) {
-            //     getComponent()
-            //         .then(mod => (mod.default || mod))
-            //         .then(Component => {
-            //             AsyncRoute.Component = Component;
-            //             if (this._mounted) {
-            //                 this.setState({
-            //                     Component
-            //                 });
-            //             }
-            //             else {
-            //                 this.state.Component = Component;
-            //             }
-            //         });
-            // }
             if (shouldLoadReducers || !Component) {
-                let component = getComponent();
-                let reducer = getReducers();
-                Promise.all([reducer, component]).then(res => {
-                    injectAsyncReducer(store, 'first', res[0].default || res[0]);
+                let component = getComponent && getComponent();
+                let reducers = getReducers && getReducers();
+                Promise.all([component, reducers]).then(res => {
+                    if (Object.prototype.toString.call(reducerName) === '[object Object]') {
+                        injectAsyncReducer(store, reducerName);
+                    }
+                    else if (this._module(res[1])) {
+                        injectAsyncReducer(store, reducerName, this._module(res[1]));
+                    }
+
                     if (this._mounted) {
-                        this.setState({
-                            Component: res[1].default || res[1],
-                            ReducersLoaded: res[0].default || res[0]
-                        });
+                        if (this._module(res[1]) && this._module(res[0])) {
+                            this.setState({
+                                Component: this._module(res[0]),
+                                ReducersLoaded: true
+                            });
+                        }
+                        else {
+                            this.setState({
+                                Component: this._module(res[0]),
+                            });
+                        }
                     }
                     else {
-                        this.state.ReducersLoaded = res[0];
-                        this.state.Component = res[1];
+                        if (this._module(res[1]) && this._module(res[0])) {
+                            this.state.ReducersLoaded = true;
+                            this.state.Component = this._module(res[0]);
+                        }
+                        else {
+                            this.state.Component = this._module(res[0]);
+                        }
+                        
                     }
+                }).catch(err => {
+                    console.log("aysncRouter--->", err);
                 });
             }
         }
         componentDidMount() {
             this._mounted = true;
         }
-
+        
         render() {
             const { Component } = this.state;
             return Component ? <Component {...this.props} /> : null;

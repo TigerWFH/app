@@ -10,7 +10,7 @@ import store from './store';
 // pages
 import AsyncRoute from './common';
 import Demo from './pages/demo';
-let First = AsyncRoute(() => import('./pages/first'), ()=>import('./pages/first/reducers'));
+let First = AsyncRoute(() => import('./pages/first'), 'first', ()=>import('./pages/first/reducers'));
 
 function App(props) {
   return (
