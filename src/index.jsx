@@ -6,9 +6,9 @@ import { Route, HashRouter as Router } from 'react-router-dom';
 
 import * as css from './index.less';
 import store from './store';
-
-// pages
+// utils
 import AsyncRoute from './common/asyncUtils';
+// pages
 import Demo from './pages/demo';
 let First = AsyncRoute(() => import('./pages/first'), 'first', ()=>import('./pages/first/reducers'));
 
