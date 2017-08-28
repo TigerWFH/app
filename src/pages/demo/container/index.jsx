@@ -48,7 +48,7 @@ class Demo extends React.Component {
 
 Demo.propTypes = {
   sendTest: PropTypes.func,
-  data: PropTypes.object | PropTypes.number | PropTypes.string
+  data: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.object])
 };
 
 export default connect(mapPropsToState, mapDispatchToProps, null)(Demo);

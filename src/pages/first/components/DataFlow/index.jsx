@@ -28,7 +28,7 @@ function DataFlow(props = {}) {
 }
 
 DataFlow.propTypes = {
-  data: PropTypes.object | PropTypes.string | PropTypes.number,
+  data: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.object]),
   getFirstData: PropTypes.func
 };
 

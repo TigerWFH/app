@@ -38,7 +38,7 @@ class First extends React.Component {
 }
 
 First.propTypes = {
-    data: PropTypes.object | PropTypes.string | PropTypes.number,
+    data: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.object]),
     getFirstData: PropTypes.func
 };
 
