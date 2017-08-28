@@ -12,7 +12,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import * as Actions from '../actions';
 
-
+import View from '../../../common/widgets/view';
 function mapPropsToState(state, ownProps) {
   let { demo } = state;
   return { ...demo };
@@ -36,12 +36,12 @@ class Demo extends React.Component {
   render() {
     let { data } = this.props;
     return (
-      <div>
+      <View>
         <button onClick={this._onSendTest}>
           sendTest
         </button>
         {'this is Demo world! +' + data}
-      </div>
+      </View>
     )
   }
 }
