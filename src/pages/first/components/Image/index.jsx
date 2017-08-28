@@ -8,15 +8,16 @@
 
 //  libs
 import * as React from 'react';
+import PropTypes from 'prop-types';
 
 function Image(props = {}) {
   let { img } = props;
-  console.log("img--->", img);
   return (
-    <div>
-      <img src={img} />
-    </div>
+    <img src={img} />
   )
 }
+Image.propTypes = {
+  img: PropTypes.string.isRequired
+};
 
 export default Image;

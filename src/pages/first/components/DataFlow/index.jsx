@@ -8,6 +8,7 @@
 
 // libs
 import * as React from 'react';
+import PropTypes from 'prop-types';
 import * as css from './index.less';
 
 function DataFlow(props = {}) {
@@ -25,5 +26,10 @@ function DataFlow(props = {}) {
     </div>
   )
 }
+
+DataFlow.propTypes = {
+  data: PropTypes.object | PropTypes.string | PropTypes.number,
+  getFirstData: PropTypes.func
+};
 
 export default DataFlow;

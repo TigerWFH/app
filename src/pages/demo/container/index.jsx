@@ -9,7 +9,9 @@
 //  libs
 import * as React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import * as Actions from '../actions';
+
 
 function mapPropsToState(state, ownProps) {
   let { demo } = state;
@@ -43,5 +45,10 @@ class Demo extends React.Component {
     )
   }
 }
+
+Demo.propTypes = {
+  sendTest: PropTypes.func,
+  data: PropTypes.object | PropTypes.number | PropTypes.string
+};
 
 export default connect(mapPropsToState, mapDispatchToProps, null)(Demo);
