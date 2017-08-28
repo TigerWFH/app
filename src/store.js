@@ -1,3 +1,11 @@
+/**
+ * @title:      app store
+ * @author:     Monkey
+ * @email:      334080374@qq.com
+ * @date:       2017-8-23
+ * @modify Date: 
+ */
+
 // libs
 import { createStore, applyMiddleware } from 'redux';
 // plugins

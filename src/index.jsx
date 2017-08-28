@@ -1,3 +1,11 @@
+/**
+ * @title:      app index
+ * @author:     Monkey
+ * @email:      334080374@qq.com
+ * @date:       2017-8-23
+ * @modify Date: 
+ */
+
 // libs
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
@@ -10,7 +18,7 @@ import store from './store';
 import AsyncRoute from './common/asyncUtils';
 // pages
 import Demo from './pages/demo';
-let First = AsyncRoute(() => import('./pages/first'), 'first', ()=>import('./pages/first/reducers'));
+let First = AsyncRoute(() => import('./pages/first'), 'first', () => import('./pages/first/reducers'));
 
 function App(props) {
   return (

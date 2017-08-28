@@ -1,3 +1,12 @@
+/**
+ * @title:      Image
+ * @author:     Monkey
+ * @email:      334080374@qq.com
+ * @date:       2017-8-23
+ * @modify Date: 
+ */
+
+//  libs
 import * as React from 'react';
 
 function Image(props = {}) {
@@ -5,7 +14,7 @@ function Image(props = {}) {
   console.log("img--->", img);
   return (
     <div>
-      <img src={img}/>
+      <img src={img} />
     </div>
   )
 }

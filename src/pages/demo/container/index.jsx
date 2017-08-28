@@ -1,3 +1,12 @@
+/**
+ * @title:      demo index
+ * @author:     Monkey
+ * @email:      334080374@qq.com
+ * @date:       2017-8-23
+ * @modify Date: 
+ */
+
+//  libs
 import * as React from 'react';
 import { connect } from 'react-redux';
 import * as Actions from '../actions';
