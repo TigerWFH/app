@@ -11,13 +11,17 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 
 function Image(props = {}) {
-  let { img } = props;
+  let { img, className, style } = props;
   return (
-    <img src={img} />
+    <img className={className}
+      style={style}
+      src={img} />
   )
 }
 Image.propTypes = {
-  img: PropTypes.string.isRequired
+  img: PropTypes.string.isRequired,
+  style: PropTypes.object,
+  className: PropTypes.string
 };
 
 export default Image;

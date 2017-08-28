@@ -31,7 +31,8 @@ class First extends React.Component {
             <div className={css["first"]}>
                 <DataFlow data={data}
                     getFirstData={getFirstData} />
-                <Image img={require('../../../common/res/images/web.png')} />
+                <Image style={{ width: '200px' }}
+                    img={require('../../../common/res/images/web.png')} />
             </div>
         )
     }
