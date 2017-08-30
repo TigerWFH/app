@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            border: 2px solid yellow;
+        }
+
+        .parent {
+            width: 260px;
+            height: 150px;
+            border: 5px solid #00a3fe;
+            margin: 0 auto;
+            padding: 10px;
+            overflow: scroll;
+        }
+
+        .child {
+            margin: 0 auto;
+            /* padding: 10px; */
+            width: 180px;
+            height: 40px;
+            border: 5px solid red;
+            overflow: scroll;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="first" class="parent">
+        <div id="second" class="child">
+            scrollscsadasfasfsafsaf
+        </div>
+    </div>
+    <a href="https:www.baidu.com" id="a1">
+        baidu
+        <a href="https://www.taobao.com" id="a2">taobao</a>
+    </a>
+    <script>
+        let parent = document.getElementById('first');
+        let child = document.getElementById('second');
+        // let a1 = document.getElementById('a1');
+        // let a2 = document.getElementById('a2');
+        // parent.addEventListener('mousewheel', () => {
+        //     // event.preventDefault();
+        // });
+        // child.addEventListener('mousewheel', (event) => {
+        //     event.stopPropagation();
+        //     // event.stopImmediatePropagation();
+        // });
+        console.log("p-clientWidth:", parent.clientWidth);
+        console.log("p-clientWidth:", parent.clientTop);
+        // console.log("p-scrollWidth:", parent.scrollWidth);
+        // console.log("p-offsetWidth:", parent.offsetWidth);
+        console.log("c-clientWidth:", child.clientHeight);
+        console.log("c-offsetWidth:", child.offsetHeight);
+        console.log("c-scrollWidth:", child.scrollHeight);
+        console.log("c-parent:", child.offsetParent);
+        console.log("c-top:", child.offsetTop);
+        console.log("c-scrollWidth:", child.getBoundingClientRect());
+        // console.log("c-scrollWidth:", parent.scrollWidth);
+        // console.log("c-offsetWidth:", parent.offsetWidth);
+    </script>
+</body>
+
+</html>
