@@ -14,18 +14,18 @@
         .parent {
             width: 260px;
             height: 150px;
+            padding: 10px;
             border: 5px solid #00a3fe;
             margin: 0 auto;
-            padding: 10px;
             overflow: scroll;
         }
 
         .child {
-            margin: 0 auto;
-            /* padding: 10px; */
             width: 180px;
             height: 40px;
+            padding: 10px;
             border: 5px solid red;
+            margin: 0 auto;
             overflow: scroll;
         }
     </style>
@@ -33,38 +33,34 @@
 
 <body>
     <div id="first" class="parent">
+        asjkdsafjkdfjdfjajlgkgslkhadskhflajsk
         <div id="second" class="child">
-            scrollscsadasfasfsafsaf
+            scrollscsadasfasfsafsafasfdsaflksaaaaaaabbbbbbb
         </div>
     </div>
-    <a href="https:www.baidu.com" id="a1">
-        baidu
-        <a href="https://www.taobao.com" id="a2">taobao</a>
-    </a>
     <script>
         let parent = document.getElementById('first');
         let child = document.getElementById('second');
+        let pageX = 0;
         // let a1 = document.getElementById('a1');
         // let a2 = document.getElementById('a2');
-        // parent.addEventListener('mousewheel', () => {
-        //     // event.preventDefault();
-        // });
-        // child.addEventListener('mousewheel', (event) => {
-        //     event.stopPropagation();
-        //     // event.stopImmediatePropagation();
-        // });
-        console.log("p-clientWidth:", parent.clientWidth);
-        console.log("p-clientWidth:", parent.clientTop);
-        // console.log("p-scrollWidth:", parent.scrollWidth);
-        // console.log("p-offsetWidth:", parent.offsetWidth);
-        console.log("c-clientWidth:", child.clientHeight);
-        console.log("c-offsetWidth:", child.offsetHeight);
-        console.log("c-scrollWidth:", child.scrollHeight);
-        console.log("c-parent:", child.offsetParent);
-        console.log("c-top:", child.offsetTop);
-        console.log("c-scrollWidth:", child.getBoundingClientRect());
-        // console.log("c-scrollWidth:", parent.scrollWidth);
-        // console.log("c-offsetWidth:", parent.offsetWidth);
+        parent.addEventListener('mousewheel', () => {
+        });
+        child.addEventListener('mouseenter', (event) => {
+            console.log("event--->", event);
+            pageX = event.pageX;
+            // alert(123)
+        })
+        child.addEventListener('mousewheel', (event) => {
+            let direction = (event.pageX - pageX) < 0 ? 'left' : 'right';
+            let scrollLeft = child.scrollLeft;
+            if (direction === 'left') {
+                scrollLeft === 0 && event.preventDefault();
+            }
+            else {
+                scrollLeft + child.clientWidth >= child.scrollWidth - 5 && event.preventDefault();
+            }
+        });
     </script>
 </body>
 
