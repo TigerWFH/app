@@ -65,7 +65,7 @@ class Canvas extends React.Component {
     }
 }
 
-Canvas.PropTypes = {
+Canvas.propTypes = {
     width: PropTypes.string,
     height: PropTypes.string
 };
