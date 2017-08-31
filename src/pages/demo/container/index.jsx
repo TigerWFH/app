@@ -26,13 +26,15 @@ function mapDispatchToProps(dispatch, ownProps) {
 }
 
 class Demo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.demos = new Map([['demo1', true]]);
+  }
   static defaultProps = {//会和Provider第一次传进来的数据合并之后，进行第一次渲染：provider提供默认值，使用provider提供的默认值；否者使用class自定义的
     data: "default"
   }
   _onSendTest = (e) => {
     let { sendTest } = this.props;
-    e.stopPropagation();
-    alert('button')
     sendTest();
   }
 
@@ -45,24 +47,20 @@ class Demo extends React.Component {
   }
   render() {
     let { data } = this.props;
+    let demos = this.demos;
     return (
       <View>
-        <div onScroll={this._onScrollF}
-          className={css["scrollWrapper"]}>
-          滚动askadfkafkaskllkfjlsafjlsakflsadkfsakfksafjasd
-          <div onScroll={this._onScroll}
-            className={css["scroll"]}>
-            child contentaasfdsadfasfasfasfasfdsaf
-          </div>
-        </div>
-        <div onClick={() => {
-          alert(); 123
-        }}>
-          <button onClick={this._onSendTest}>
+        <fieldset className={css['fieldsetFirst']}
+          style={{ display: demos.get('demo1') ? 'block' : 'none' }}>
+          <legend className={css['legendFirst']}>
+            Demo1
+          </legend>
+          <button className={css['btn']}
+            onClick={this._onSendTest}>
             sendTest
           </button>
           {'this is Demo world! +' + data}
-        </div>
+        </fieldset>
       </View>
     )
   }
