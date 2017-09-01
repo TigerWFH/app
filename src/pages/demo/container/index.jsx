@@ -14,6 +14,7 @@ import * as Actions from '../actions';
 import * as css from './index.less';
 import View from '../../../common/widgets/view';
 import Canvas from '../components/Canvas';
+import FlexLayout from '../components/FlexLayout';
 
 function mapPropsToState(state, ownProps) {
   let { demo } = state;
@@ -29,7 +30,9 @@ function mapDispatchToProps(dispatch, ownProps) {
 class Demo extends React.Component {
   constructor(props) {
     super(props);
-    this.demos = new Map([['demo1', true], ['demo2', true]]);
+    this.demos = new Map([['demo1', true],
+    ['demo2', true],
+    ['demo3', true]]);
   }
   static defaultProps = {//会和Provider第一次传进来的数据合并之后，进行第一次渲染：provider提供默认值，使用provider提供的默认值；否者使用class自定义的
     data: "default"
@@ -68,6 +71,13 @@ class Demo extends React.Component {
             Canvas
           </legend>
           <Canvas />
+        </fieldset>
+        <fieldset className={css['fieldsetFirst']}
+          style={{ display: demos.get('demo3') ? 'block' : 'none' }}>
+          <legend className={css['legendFirst']}>
+            FlexLayout
+          </legend>
+          <FlexLayout />
         </fieldset>
       </View>
     )
