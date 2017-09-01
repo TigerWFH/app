@@ -10,11 +10,12 @@
         align-content：设置容器内每行沿侧轴对齐方式。对单行无效。flex-start|flex-end|center|space-between|space-around|stretch
 * 弹性元素属性(flex item)6个：
 
-        order:定义项目的排列顺序。
-        align-self：用来单独设置弹性元素在侧轴的对齐方式，与align-items功能相同。auto|flex-start|flex-end|center|baseline|stretch
-        flex-grow:增加因素
-        flex-shrink:收缩因素
-        flex-basis:设定弹性框伸缩的基准值，子元素的宽度？
+        order：定义项目的排列顺序，integer
+        align-self：单独设置弹性元素在侧轴的对齐方式。auto|flex-start|flex-end|center|baseline|stretch
+        flex-grow：增加因素
+        flex-shrink：收缩因素
+        flex-basis：设定弹性框伸缩的基准值，子元素的宽度？
+        flex：flex-grow,flex-shrink,flex-basis缩写。
 # 注意：
 * 设置为flex之后，子元素的float,clear,vertical-align属性失效。
 # float layout 浮动布局的问题
