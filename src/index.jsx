@@ -11,6 +11,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { Route, HashRouter as Router } from 'react-router-dom';
+import 'babel-polyfill';
 
 import * as css from './index.less';
 import store from './store';

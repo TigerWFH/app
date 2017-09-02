@@ -14,6 +14,7 @@ import * as css from './index.less';
 // component
 import DataFlow from '../components/DataFlow';
 import Image from '../components/Image';
+import ElemPosition from '../components/ElemPosition';
 
 function mapStateToProps(state, ownProps) {
     let { first } = state;
@@ -29,10 +30,26 @@ class First extends React.Component {
         let { data, getFirstData } = this.props;
         return (
             <div className={css["first"]}>
-                <DataFlow data={data}
-                    getFirstData={getFirstData} />
-                <Image style={{ width: '200px' }}
-                    img={require('../../../common/res/images/web.png')} />
+                <fieldset>
+                    <legend>
+                        Demo1
+                    </legend>
+                    <DataFlow data={data}
+                        getFirstData={getFirstData} />
+                </fieldset>
+                <fieldset>
+                    <legend>
+                        Demo2
+                    </legend>
+                    <Image style={{ width: '200px' }}
+                        img={require('../../../common/res/images/web.png')} />
+                </fieldset>
+                <fieldset>
+                    <legend>
+                        Demo3
+                    </legend>
+                    <ElemPosition />
+                </fieldset>
             </div>
         )
     }
