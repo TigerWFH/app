@@ -11,15 +11,27 @@ class ElemPosition extends React.Component{
       let size = this._getElemPosition(this.div);
       console.log('size--->', size);
       console.log("rect--->", this.div.getBoundingClientRect());
-      console.log("viewportTop--->", document.documentElement.clientTop);
-      console.log("viewportLeft--->", document.documentElement.clientLeft);
-      console.log("viewportWidth--->", document.documentElement.clientWidth);
-      console.log("viewportHeight--->", document.documentElement.clientHeight);
+      console.log("clientTop--->", document.documentElement.clientTop);
+      console.log("clientLeft--->", document.documentElement.clientLeft);
+      console.log("clientWidth--->", document.documentElement.clientWidth);
+      console.log("clientHeight--->", document.documentElement.clientHeight);
+    }
+    if (this.div1) {
+      let size = this._getElemPosition(this.div1);
+      console.log('size--->', size);
+      console.log("rect--->", this.div1.getBoundingClientRect());
+      console.log("clientTop--->", document.documentElement.clientTop);
+      console.log("clientLeft--->", document.documentElement.clientLeft);
+      console.log("clientWidth--->", document.documentElement.clientWidth);
+      console.log("clientHeight--->", document.documentElement.clientHeight);
     }
   }
-
+  _onScroll = () => {
+    this.componentDidMount()
+  }
   _getElemPosition = (dom) => {
-    let size = {};
+    let size = {
+    };
     if (dom) {
       let offsetParent = dom.offsetParent;
       let top = dom.offsetTop;
@@ -39,8 +51,13 @@ class ElemPosition extends React.Component{
   }
   render() {
     return (
-      <div ref={div => { this.div = div; }}>
+      <div ref={div => { this.div = div; }}
+        onClick={this._onScroll}>
         get element position
+        <div ref={div => { this.div1 = div; }}
+          style={{position: 'absolute',top: '0'}}>
+          position: absolute
+        </div>
       </div>
     )
   }

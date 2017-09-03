@@ -41,7 +41,7 @@ class First extends React.Component {
                     <legend>
                         Demo2
                     </legend>
-                    <Image style={{ width: '200px' }}
+                    <Image style={{ height: '720px',display: 'block' }}
                         img={require('../../../common/res/images/web.png')} />
                 </fieldset>
                 <fieldset>
