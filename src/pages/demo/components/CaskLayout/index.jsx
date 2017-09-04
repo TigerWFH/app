@@ -28,11 +28,11 @@ class CaskLayout extends React.Component {
         let elemList = [];
         for (let i = 0; i < 10; i++) {
             let style = {
-                flexBasis: this.initialHeight * this.random[i] + 'px',
-                flexGrow: 1
+                width: this.initialHeight * this.random[i] + 'px',
+                flexGrow: this.random[i]
             };
             let childStyle = {
-                paddingBottom: this.initialHeight,
+                paddingBottom: 1 / this.random[i] * 100 + '%',
             };
             let elem = <div className={css['flexItem2']}
                 style={style}
