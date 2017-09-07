@@ -18,6 +18,7 @@ import FlexLayout from '../components/FlexLayout';
 import CssStyle from '../components/CssStyle';
 import CaskLayout from '../components/CaskLayout';
 import Stroke from '../components/Stroke';
+import Background from '../components/Background';
 
 function mapPropsToState(state, ownProps) {
   let { demo } = state;
@@ -59,6 +60,12 @@ class Demo extends React.Component {
     let demos = this.demos;
     return (
       <View>
+        <fieldset>
+          <legend className={css['legendFirst']}>
+            Background
+          </legend>
+          <Background />
+        </fieldset>
         <fieldset className={css['fieldsetSecond']}>
           <legend className={css['legendSecond']}>
             Stroke
