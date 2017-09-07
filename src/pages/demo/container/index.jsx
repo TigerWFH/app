@@ -17,6 +17,7 @@ import Canvas from '../components/Canvas';
 import FlexLayout from '../components/FlexLayout';
 import CssStyle from '../components/CssStyle';
 import CaskLayout from '../components/CaskLayout';
+import Stroke from '../components/Stroke';
 
 function mapPropsToState(state, ownProps) {
   let { demo } = state;
@@ -58,6 +59,12 @@ class Demo extends React.Component {
     let demos = this.demos;
     return (
       <View>
+        <fieldset className={css['fieldsetSecond']}>
+          <legend className={css['legendSecond']}>
+            Stroke
+          </legend>
+          <Stroke />
+        </fieldset>
         <fieldset className={css['fieldsetFirst']}>
           <legend className={css['legendFirst']}>
             CaskLayout
