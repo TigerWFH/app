@@ -9,9 +9,9 @@ class Canvas extends React.Component {
     _renderRect(context) {
         if (context instanceof CanvasRenderingContext2D) {
             context.fillStyle = 'rgb(200, 0, 0)';
-            context.fillRect(10, 10, 55, 50);
-            context.fillStyle = "rgba(0, 0, 200, 0.5)";
-            context.fillRect(30, 30, 55, 50);
+            context.fillRect(10, 10, 100, 100);
+            context.clearRect(20, 20, 60, 60);
+            context.strokeRect(30, 30, 40, 40);
         }
         else {
             console.warn('the browser do not support canvas!')
@@ -24,6 +24,26 @@ class Canvas extends React.Component {
             context.lineTo(100, 75);
             context.lineTo(100, 25);
             context.fill();
+        }
+        else {
+            console.warn('the browser do not support canvas!')
+        }
+    }
+    _renderCircle(context) {
+        if (context instanceof CanvasRenderingContext2D) {
+            context.beginPath();
+            context.arc(30, 100, 20, 0, 2 * Math.PI, false);
+            context.stroke();
+            context.closePath();
+            context.beginPath();
+            context.arc(80, 100, 20, 0, 3 / 2 * Math.PI, true);
+            context.stroke();
+            context.closePath();
+            context.beginPath();
+            context.arc(130, 100, 20, 0, 3 / 2 * Math.PI, false);
+            context.stroke();
+            context.fillText('y正向朝下的，所以下面是Math.PI/2', 30, 30);
+            context.closePath();
         }
         else {
             console.warn('the browser do not support canvas!')
@@ -50,7 +70,8 @@ class Canvas extends React.Component {
             let context = this.canvas.getContext('2d');
             // this._renderRect(context);
             // this._renderTrangle(context);
-            this._renderSmailFace(context);
+            this._renderCircle(context);
+            // this._renderSmailFace(context);
         }
         else {
             console.error('the browser do not support canvas!');
@@ -59,8 +80,8 @@ class Canvas extends React.Component {
 
     render() {
         return <canvas ref={(canvas) => { this.canvas = canvas; }}
-            width={this.props.width || '500px'}
-            height={this.props.height || '300px'} >
+            width={this.props.width || '800px'}
+            height={this.props.height || '600px'} >
         </canvas>
     }
 }
