@@ -84,7 +84,7 @@ class Demo extends React.Component {
           <legend className={css['legendFirst']}>
             CaskLayout
           </legend>
-          <CaskLayout />
+          <CaskLayout imgList={[]}/>
         </fieldset>
         <fieldset className={css['fieldsetSecond']}
           style={{ display: demos.get('demo4') ? 'block' : 'none' }}>
