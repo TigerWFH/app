@@ -89,6 +89,36 @@
         document.body.clientWidth
         document.body.clientHeight
         通过对比这几个值在四个浏览器中的值，inner***包括滚动条宽度，outer***是窗体大小，client***是viewport大小，且viewport+scrollbar = inner***，且scrollbar宽度是17px。
+## html相关节点类图
+
+        Node
+        |
+        |-1--->DocumentFragment
+        |
+        |-2--->DocumentType
+        |
+        |-3--->Document
+        |       |       |------>HTMLDocument(HTML文档)
+        |       |------>|
+        |       |       |------>XMLDocument(XML文档)
+        |-4--->Entity
+        |
+        |-5--->EntityReference
+        |
+        |-6--->ProcessingInstruction
+        |
+        |-7--->Attr(属性)
+        |
+        |-8--->CharacterData
+        |       |       |------>TEXT(文本)
+        |       |------>|
+        |       |       |------>COMMENT(注释)
+        |-9--->Notation
+        |
+        |-10-->Element
+                |       |----->HTMLElement(html元素)
+                |------>|
+                        |----->SVGElement
 # 移动端知识点
 * 单位：
 
