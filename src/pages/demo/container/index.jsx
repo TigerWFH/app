@@ -19,6 +19,7 @@ import CssStyle from '../components/CssStyle';
 import CaskLayout from '../components/CaskLayout';
 import Stroke from '../components/Stroke';
 import Background from '../components/Background';
+import EventCase from '../components/Event';
 
 function mapPropsToState(state, ownProps) {
   let { demo } = state;
@@ -60,6 +61,12 @@ class Demo extends React.Component {
     let demos = this.demos;
     return (
       <View>
+        <fieldset>
+          <legend className={css['legendSecond']}>
+            EventCase
+          </legend>
+          <EventCase />
+        </fieldset>
         <fieldset>
           <legend className={css['legendFirst']}>
             Background
