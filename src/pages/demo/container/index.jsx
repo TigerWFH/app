@@ -13,6 +13,7 @@ import PropTypes from 'prop-types';
 import * as Actions from '../actions';
 import * as css from './index.less';
 import View from '../../../common/widgets/View';
+import Zoom from '../../../common/widgets/Zoom';
 import Canvas from '../components/Canvas';
 import FlexLayout from '../components/FlexLayout';
 import CssStyle from '../components/CssStyle';
@@ -66,6 +67,7 @@ class Demo extends React.Component {
             EventCase
           </legend>
           <EventCase />
+          <Zoom />
         </fieldset>
         <fieldset>
           <legend className={css['legendFirst']}>
