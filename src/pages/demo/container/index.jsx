@@ -12,7 +12,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import * as Actions from '../actions';
 import * as css from './index.less';
-import View from '../../../common/widgets/view';
+import View from '../../../common/widgets/View';
 import Canvas from '../components/Canvas';
 import FlexLayout from '../components/FlexLayout';
 import CssStyle from '../components/CssStyle';
