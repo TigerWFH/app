@@ -53,7 +53,8 @@ module.exports = {
                 minimize: true,
                 camelCase: true
               }
-            }
+            },
+            'less-loader'
           ]
         })
       },
