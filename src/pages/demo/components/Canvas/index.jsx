@@ -49,6 +49,20 @@ class Canvas extends React.Component {
             console.warn('the browser do not support canvas!')
         }
     }
+    _renderArc(context) {
+        if (context instanceof CanvasRenderingContext2D) {
+            context.beginPath();
+            context.moveTo(50, 50);
+            context.arcTo(50, 60, 100, 60, 60);
+            context.stroke();
+            context.fillRect(50, 60, 5, 5);
+            context.fillRect(100, 60, 5, 5);
+            context.closePath();
+        }
+        else {
+            console.warn('the browser do not support canvas!')
+        }
+    }
     _renderSmailFace(context) {
         if (context instanceof CanvasRenderingContext2D) {
             context.beginPath();
@@ -70,7 +84,8 @@ class Canvas extends React.Component {
             let context = this.canvas.getContext('2d');
             // this._renderRect(context);
             // this._renderTrangle(context);
-            this._renderCircle(context);
+            // this._renderCircle(context);
+            this._renderArc(context);
             // this._renderSmailFace(context);
         }
         else {

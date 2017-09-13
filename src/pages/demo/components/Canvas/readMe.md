@@ -23,17 +23,24 @@
         fill(path,[fillRule]),通过填充路径的内容区域生成实心的图形。path:{Path2d},fillRUle:{nonzero | evenodd}
         lineTo(x,y),绘制一条从当前位置(x0,y0)到指定位置(x,y)的直线。
         moveTo(x,y),将画笔从当前位置(x0,y0)移动到指定位置(x,y)。
-* 圆弧
+* 圆与圆弧
         arc(x,y,radius,startAngle,endAngle,anticlockwise),(x,y)是圆心，
         radius是半径，
         startAngle开始角度，
         endAngle结速角度，
         anticlockwise绘制方向（顺时针逆时针）。
         
-        arcTo(x1,y1,x2,y2,radius),根据指定的控制点和半径画一段圆弧，再以直线连接两个控制点。
+        arcTo(x1,y1,x2,y2,radius)：令当前点为O，绘制与OA和AB内切，半径为radius的最小弧线（内切园的一部分）
+        (x1,y1)控制点A坐标，
+        (x2,y2)控制点B坐标，
+        radius弧线的半径
 * 二次贝赛尔曲线以及三次贝塞尔曲线
-        quadraticCurveTo(cp1x,cp1y,x,y),绘制二次贝赛尔曲线，(cp1x,cp1y)是控制点，(x,y)是结速点。
+        quadraticCurveTo(cpx,cpy,x,y)：
+        (cpx, xpy)，控制点A坐标
+        (x, y)，end point的坐标
         bezierCurveTo(cp1x,cp1y,cp2x,cp2y,x,y),绘制三次贝塞尔曲线。
+* n阶贝塞尔曲线公式:
+![n阶贝塞尔曲线](../../../../common/res/images/math.png)
 * 矩形
         rect(x,y,width,height)
 * Path2D对象
