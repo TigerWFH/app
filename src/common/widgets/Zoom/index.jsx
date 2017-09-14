@@ -35,7 +35,7 @@ class Zoom extends React.Component {
         <i className={css['i']}>
         </i>
         <img className={css['img']}
-          src={require('../../res/images/bg.jpg')} />
+          src={require('../../res/images/1.jpeg')} />
       </div>
       <div className={css['count']}>
         {`${index}/${total}`}
