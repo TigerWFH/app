@@ -14,7 +14,7 @@ class Zoom extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isShow: true,
+      isShow: false,
       index: 1
     };
   }
