@@ -80,6 +80,13 @@ class FlexLayout extends React.Component {
                     </div>
                 </div>
             </div>
+            <div style={{border: "1px solid black", padding: "10px", margin: "10px"}}>
+                <div style={{display: "flex"}}>
+                    <div className={css['itemTest1']}>1</div>
+                    <div className={css['itemTest2']}>2</div>
+                    <span className={css['itemTest3']}>2</span>
+                </div>
+            </div>
         </div>
     }
 }
