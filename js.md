@@ -29,6 +29,8 @@
                 |       |----->HTMLElement(html元素)
                 |------>|
                         |----->SVGElement
+## Promise
+* promise相关[规范文档](https://promisesaplus.com/)，[中文翻译](http://www.ituring.com.cn/article/66566)
 ## 元素的宽高
 * client***系列：`content+padding+css width(标准盒模型情况下)`
 
@@ -132,4 +134,5 @@
         dp：描述屏幕的大小，用物理像素度量。
         ppi：描述的屏幕的像素密度，越大显示越无颗粒感。
 * [参考资料](https://www.zhihu.com/question/25361043)
+
 [![](./src/common/res/images/iphone.jpg)](https://www.zhihu.com/question/25361043)
