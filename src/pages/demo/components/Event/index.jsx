@@ -18,11 +18,33 @@ class EventCase extends React.Component {
         console.log('keyUp');
         console.log('keyCode:', event.keyCode);
     }
+    componentDidMount(){
+        this.input.addEventListener('keydown', this._onKeyDown, false);
+        this.input.addEventListener('keyup', this._onKeyUp, false);
+        this.button.addEventListener('click', ()=>{
+            console.log('change state');
+            this.setState({
+                s: false
+            });
+        });
+    }
+
+    shouldComponentUpdate(nextProps, nextState){
+        this.input.removeEventListener('keydown', null, false);
+        this.button.removeEventListener('click', ()=>{
+
+        }, false);
+        return true;
+    }
+
+    componentWillUnmount(){
+        this.input.removeEventListener('keydowm', ()=>{
+        }, false);
+    }
     render() {
         return <div>
-            <input onKeyPress={this._onKeyPress}
-                onKeyDown={this._onKeyDown}
-                onKeyUp={this._onKeyUp} />
+            <button ref={button=>this.button=button}>change</button>
+            <input ref={input=>this.input=input}/>
         </div>
     }
 }
