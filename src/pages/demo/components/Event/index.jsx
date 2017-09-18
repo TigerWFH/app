@@ -5,6 +5,7 @@ class EventCase extends React.Component {
         super(props);
     }
     _onKeyDown = (event) => {
+        console.log(Array.from(arguments))
         console.log('keyDown');
         console.log('keyCode:', event.keyCode);
     }
@@ -18,10 +19,10 @@ class EventCase extends React.Component {
         console.log('keyUp');
         console.log('keyCode:', event.keyCode);
     }
-    componentDidMount(){
-        this.input.addEventListener('keydown', this._onKeyDown, false);
+    componentDidMount() {
+        this.input.addEventListener('keydown', this._onKeyDown.bind("test"), false);
         this.input.addEventListener('keyup', this._onKeyUp, false);
-        this.button.addEventListener('click', ()=>{
+        this.button.addEventListener('click', () => {
             console.log('change state');
             this.setState({
                 s: false
@@ -29,22 +30,23 @@ class EventCase extends React.Component {
         });
     }
 
-    shouldComponentUpdate(nextProps, nextState){
+    shouldComponentUpdate(nextProps, nextState) {
         this.input.removeEventListener('keydown', null, false);
-        this.button.removeEventListener('click', ()=>{
+        this.button.removeEventListener('click', () => {
 
         }, false);
         return true;
     }
 
-    componentWillUnmount(){
-        this.input.removeEventListener('keydowm', ()=>{
+    componentWillUnmount() {
+        this.input.removeEventListener('keydowm', () => {
         }, false);
     }
     render() {
         return <div>
-            <button ref={button=>this.button=button}>change</button>
-            <input ref={input=>this.input=input}/>
+            <button ref={button => this.button = button}>change</button>
+            <input ref={input => this.input = input} />
+            <iframe ref={iframe => this.iframe = iframe}></iframe>
         </div>
     }
 }
