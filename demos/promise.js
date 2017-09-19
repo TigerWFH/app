@@ -16,3 +16,8 @@
 // }, error=>{
 //   console.log('error', error);
 // })
+let target = {};
+let handler = {};
+let proxy = new Proxy(target, handler);
+proxy.color = 'red';
+console.log(target.color);

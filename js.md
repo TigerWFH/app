@@ -1,5 +1,8 @@
 # 原生javascript知识点累积
-## js类层次关系
+## js内置对象和web api区别
+* js内置对象：js原生提供的，脱离宿主环境依然能够正常使用。例如：Map，Array等。
+* web api：宿主环境提供的，脱离宿主环境就不能使用了。例如：XMLHttpRequest，File，Blob，HTMLElement等。
+## js类层次关系（宿主环境即浏览器，提供）
 
         Node
         |
@@ -31,6 +34,101 @@
                         |----->SVGElement
 ## Promise
 * promise相关[规范文档](https://promisesaplus.com/)，[中文翻译](http://www.ituring.com.cn/article/66566)
+## javascript中的类型化数组的实现拆分成了两个部分：缓冲和视图
+### ArrayBuffer（缓冲）
+* 作用 
+        
+        二进制数据缓冲区，描述的是一个数据块，无格式。
+        不能直接操作ArrayBuffer的内容，需要通过类型化数组对象（typed array object）
+        或数据视图对象（DataView）来对buffer的内容进行`读取`和`写入`操作。
+* 属性和方法
+
+        ArrayBuffer.length,值是1
+        get ArrayBuffer[@@species],用于创建派生对象的构造函数（不理解）
+        ArrayBuffer.prototype,原型，允许给所有ArrayBuffer对象添加属性。
+        ArrayBuffer.isView(arg),如果是视图实例，返回true；否者返回false。
+        ArrayBuffer.transfer(oldBuffer[, newByteLength]),返回新的
+                ArrayBuffer,内容则是依据oldBuffer内容进行截取或者用0扩展。
+* 原型(即实例方法)
+
+        ArrayBuffer.prototype.constructor
+        ArrayBuffer.prototype.byteLength（只读，不可变更）
+        ArrayBuffer.prototype.slice()
+### TypedArray(视图1)
+
+        视图提供了上下文-即数据类型、起始偏移量和元素数-将数据转换为实际有类型的数组。
+* 作用
+
+        TypedArray对象描述一个底层的二进制缓冲区(ArrayBuffer)的类似数组(array-like)视图，
+        即解析二进制的规则。
+* 所有构造函数
+        
+        Int8Array()
+        Uint8Array()
+        Uint8ClampedArray()
+        Int16Array()
+        Uint16Array()
+        Int32Array()
+        Uint32Array()
+        Float32Array()
+        Float64Array()
+* 属性和方法
+
+        TypedArray.BYTES_PER_ELEMENT，代表了强类型数组中每个元素占用的字节数
+        TypedArray.name，描述数组构造名的字符串
+        get TypedArray[@@species]，访问器属性返回类型化苏沪对象的构造器
+
+        TypedArray.from()，一句类数组对象或可枚举对象创建一个新的类型数据
+        TypedArray.of()，
+* 原型(即实例属性和方法)
+
+        TypedArray.prototype，构造器原型，所有强类型数组的原型
+        TypedArray.prototype.buffer，指向强类型组数构造期间引用的ArrayBuffer
+        TypedArray.prototype.byteLength，类型化数组的长度（即强类型数组的长度），单位是字节
+        TypedArray.prototype.byteOffset，类型化数组距离ArrayBuffer起始位置的偏移，单位是字节
+        TypedArray.prototype.length，类型化数组的长度（元素数）
+
+        TypedArray.prototype.copyWithin()，
+        TypedArray.prototype.entries()，
+        TypedArray.prototype.vevry()，
+        TypedArray.prototype.fill()，
+        TypedArray.prototype.filter()，
+        TypedArray.prototype.find()，
+        TypedArray.prototype.findIndex()，
+        TypedArray.prototype.forEach()，
+        TypedArray.prototype.includes()，
+        TypedArray.prototype.indexOf()，
+        TypedArray.prototype.join()，
+        TypedArray.prototype.keys()，
+        TypedArray.prototype.lastIndexOf()，
+        TypedArray.prototype.map()，
+        TypedArray.prototype.reduce()，
+        TypedArray.prototype.reduceRight()，
+        TypedArray.prototype.reverse()，
+        TypedArray.prototype.set()，
+        TypedArray.prototype.slice()，
+        TypedArray.prototype.some()，
+        TypedArray.prototype.sort()，
+        TypedArray.prototype.subarray()，
+        TypedArray.prototype.toLocaleString()，
+        TypedArray.prototype.toString()，
+        TypedArray.prototype.values()，
+        TypedArray.prototype[@@iterator]()
+### DataView(视图2)
+## 可迭代协议 与 迭代器协议
+
+        可迭代协议：允许javascript对象去定义或定制它们的迭代行为。
+                为了编程可遍历对象，一个对象必须实现@@iterator方法，意思就是这个对象（或者它的原型
+                链上的某个对象）必须有一个名为Symbol.iterator的属性，该属性返回迭代器。
+        迭代器协议：迭代器实现next方法；next是一个无参函数，且返回一个对象，返回的对象有done和value两个属性。
+                done：约束见MDN
+                value：约束见MDN
+
+        可迭代对象：符合可迭代协议（即实现了Symbol.iterator属性）的对象，就是可迭代对象。
+        迭代器：符合迭代器协议（即实现了next函数，且拥有两个属性done和value，符合规范行为）的对象。
+## proxy 和 reflect
+
+        Proxy 对象用于定义 基本操作 的 自定义 行为。
 ## 元素的宽高
 * client***系列：`content+padding+css width(标准盒模型情况下)`
 
