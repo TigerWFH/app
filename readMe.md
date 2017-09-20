@@ -3,7 +3,8 @@
 * 创建日期：2017-8-23
 * 社交媒体：[![twitter](./src/common/res/images/twitter.png)twitter](https://twitter.com)[![weobo](./src/common/res/images/weibo.png)weibo](http://weibo.com/2630232391/profile?topnav=1&wvr=6)
 # js前端自动化工程
-# react-router 4.0
+
+## react-router 4.0
 
 * Router(low-level)
 * HashRouter(high-level)
@@ -11,9 +12,21 @@
 * MemoryRouter(high-level)
 * NativeRouter(high-level)
 * StaticRouter(high-level)
-
 ## react-loadable(高阶组件，用于动态载入组件，会处理大部分极端情况)   
+## [redux](http://redux.js.org/docs/api/index.html)
+* Top-level api
 
+        createStore(reducer, [preloadedState], [enhancer]);
+        combineReducers(reducers);
+        applyMiddleware(...middlewares);
+        bindActionCreators(actionCreators, dispatch);
+        compose(...functions);
+* Store API
+
+        getState()
+        dispatch(action)
+        subscribe(listener)
+        replaceReducer(nextReducer)
 ## 第一次异步数据接通的思考：
 
     reducers直接配置到rootReducer，并未进行code splitting，只有UI部分进行了 code splitting。
