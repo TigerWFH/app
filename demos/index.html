@@ -38,69 +38,27 @@
             scrollscsadasfasfsafsafasfdsaflksaaaaaaabbbbbbb
         </div>
     </div>
-    <canvas id="canvas" width="500px" height="300px"></canvas>
+    <ul>
+        <li><a href="#/">turn white</a></li>
+        <li><a href="#/blue">turn blue</a></li>
+        <li><a href="#/green">turn green</a></li>
+    </ul>
+    <script src="./router.js"></script>
     <script>
-        function draw() {
-            var canvas = document.getElementById("canvas");
-            if (canvas.getContext) {
-                var ctx = canvas.getContext("2d");
-                console.log("cts--->", ctx);
-                ctx.fillStyle = "rgb(200,0,0)";
-                ctx.fillRect(10, 10, 55, 50);
-
-                ctx.fillStyle = "rgba(0, 0, 200, 0.5)";
-                ctx.fillRect(30, 30, 55, 50);
-            }
+        var content = document.querySelector('body');
+        // change Page anything
+        function changeBgColor(color) {
+            content.style.backgroundColor = color;
         }
-        draw();
-
-        function getScrollBarWidth() {
-            var inner = document.createElement('p');
-            inner.style.width = "100%";
-            inner.style.height = "200px";
-
-            var outer = document.createElement('div');
-            outer.style.position = "absolute";
-            outer.style.top = "0px";
-            outer.style.left = "0px";
-            outer.style.visibility = "hidden";
-            outer.style.width = "200px";
-            outer.style.height = "150px";
-            outer.style.overflow = "hidden";
-            outer.appendChild(inner);
-
-            document.body.appendChild(outer);
-            var w1 = inner.offsetWidth;
-            outer.style.overflow = 'scroll';
-            var w2 = inner.offsetWidth;
-            if (w1 == w2) w2 = outer.clientWidth;
-
-            document.body.removeChild(outer);
-
-            return (w1 - w2);
-        };
-        console.log(getScrollBarWidth());
-        let parent = document.getElementById('first');
-        let child = document.getElementById('second');
-        let pageX = 0;
-        // let a1 = document.getElementById('a1');
-        // let a2 = document.getElementById('a2');
-        parent.addEventListener('mousewheel', () => {
+        Router.route('/', function () {
+            // changeBgColor('white');
+            document.write("monkey");
         });
-        child.addEventListener('mouseenter', (event) => {
-            console.log("event--->", event);
-            pageX = event.pageX;
-            // alert(123)
-        })
-        child.addEventListener('mousewheel', (event) => {
-            let direction = (event.pageX - pageX) < 0 ? 'left' : 'right';
-            let scrollLeft = child.scrollLeft;
-            if (direction === 'left') {
-                scrollLeft === 0 && event.preventDefault();
-            }
-            else {
-                scrollLeft + child.clientWidth >= child.scrollWidth - 5 && event.preventDefault();
-            }
+        Router.route('/blue', function () {
+            changeBgColor('blue');
+        });
+        Router.route('/green', function () {
+            changeBgColor('green');
         });
     </script>
 </body>

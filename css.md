@@ -1,12 +1,14 @@
 # css规范相关知识点
 
-        css2之后，css工作组将css打散到多个不同的规范(模块)中，每个模块都可以独立更新版本。那些延续css2.1已有特性的模块会升级到3版本号，新的模块则会以1作为版本号，所以很难再以css3这样的名字命名css2.1之后的css规范了。
+        css2之后，css工作组将css打散到多个不同的规范(模块)中，每个模块都可以独立更新版本。
+        那些延续css2.1已有特性的模块会升级到3版本号，新的模块则会以1作为版本号，所以很难
+        再以css3这样的名字命名css2.1之后的css规范了。
 * css语法（https://w3.org/TR/css-syntax-3）
 * css层叠与继承（https://w3.org/TR/css-cascade-3）
 * css颜色（https://w3.org/TR/css3-color）
 * 选择符（https://w3.org/TR/selectors）
 * css背景与边框（https://w3.org/TR/css3-background）
-css值与单位（https://w3.org/TR/css-values-3）
+* css值与单位（https://w3.org/TR/css-values-3）
 * css文本排版（https://w3.org/TR/css-text-3）
 * css文本装饰效果（https://w3.org/TR/css-text-decor-3）
 * css字体（https://w3.org/TR/css3-fonts）
