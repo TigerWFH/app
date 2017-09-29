@@ -1,4 +1,41 @@
 # 原生javascript知识点累积
+## JSON Schema
+JSON Schema定义了如何基于JSON格式描述JSON数据结构的规范，进而提供数据校验、文档生成和接口数据交互控制等一系列能力。
+* 作用
+
+        用于描述数据结构
+        用于构建人机可读的文档
+        用于生成模拟数据
+        用于校验数据，实现自动化测试
+* JSON Schema实例
+
+[可用关键字](https://github.com/epoberezkin/ajv#validation-keywords)
+```
+// schema,
+{
+        "$schema": "http://json-schema.org/schema#",
+        "title": "test",
+        "type":"object",
+        "description":"",
+        "properties":{
+                "name":{
+                        "type":"string",
+                        "title":"名字"
+                },
+                "age":{
+                        "type":"number",
+                        "title":"年龄",
+                        "maximum": 3
+                }
+        }
+}
+// data
+{
+        "name":"monkey",
+        "age":123
+}
+```
+
 ## js内置对象和web api区别
 * js内置对象：js原生提供的，脱离宿主环境依然能够正常使用。例如：Map，Array等。
 * web api：宿主环境提供的，脱离宿主环境就不能使用了。例如：XMLHttpRequest，File，Blob，HTMLElement等。
