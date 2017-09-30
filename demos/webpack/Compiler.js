@@ -1,6 +1,6 @@
 let Tapable = require('tapable');
 
-class Compile extends Tapable{
+class Compiler extends Tapable{
   constructor(){
     super();
   }
@@ -18,4 +18,4 @@ class Compile extends Tapable{
   }
 }
 
-module.exports = Compile;
+module.exports = Compiler;
