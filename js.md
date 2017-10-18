@@ -167,6 +167,42 @@ JSON Schema定义了如何基于JSON格式描述JSON数据结构的规范，进�
 
         Proxy 对象用于定义 基本操作 的 自定义 行为。
 ## 元素的宽高
+* window：包含DOM文档的窗口
+* window.outHeight：浏览器窗口的高度，单位像素，IE9
+* window.outWidth：浏览器窗口的宽度，单位像素，IE9
+* window.innerHeight：浏览器窗口的视口（viewport）高度，单位像素，如果存在水平滚动条，包含水平滚动条，IE9
+* window.innerWidth：浏览器窗口的视口（viewport）宽度，单位像素，如果存在垂直滚动条，包含水平滚动条，IE9
+
+* window.screen：特殊对象，返回当前渲染窗口中的屏幕相关属性信息
+* 一下数据分歧过大
+* window.screenLeft：返回浏览器窗口左边界到操作系统桌面左边界的水平距离（非标准，firefox不支持）
+* window.screenTop：返回浏览器窗口下边界到操作系统桌面上边界的垂直距离（非标准，firefox不支持）
+* window.screenX：返回浏览器窗口左边界到操作系统桌面左边界的水平距离（非标准）
+* window.screenY：返回浏览器窗口下边界到操作系统桌面上边界的垂直距离（非标准）
+
+* window.pageXOffset：返回文档在窗口左上角水平方向滚动的像素（pageXOffset是scrollX的别名，更具通用型，IE9以上才支持这两个属性）
+* window.pageYOffset：返回文档在窗口左上角垂直方向滚动的像素（pageYOffset是scrollY的别名，更具通用型，IE9以上才支持这两个属性）
+* window.scrollX：返回文档在窗口左上角水平方向滚动的像素
+* window.scrollY：返回文档在窗口左上角垂直方向滚动的像素
+
+* document：文档实例
+
+* Element：
+* clientHeight：
+* clientWidth：
+* clientLeft：
+* clientTop：
+* scrollHeight：
+* scrollWidth：
+* scrollLeft：
+* scrollTop：
+
+* HTMLElement(Element的子类)
+* offsetHeight：
+* offsetWidth：
+* offsetLeft：
+* offsetTop：
+
 * client***系列：`content+padding+css width(标准盒模型情况下)`
 
         clientWidth：内容可视宽度（包括padding）
@@ -192,6 +228,8 @@ JSON Schema定义了如何基于JSON格式描述JSON数据结构的规范，进�
         chrome在使用该函数时，如果遇到img标签不指定高度，计算数据top不正确；
         firefox在使用该函数时，如果遇到img标签不指定高度，第一次计算数据不正确，刷行可以计算出正确数据。
 * element.getClientRects()
+
+[一些参考资料](http://blog.sina.com.cn/s/blog_14e2a237b0102w4i0.html)
 ## window窗口
 * 版本信息：
 

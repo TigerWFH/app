@@ -14,6 +14,7 @@ import * as Actions from '../actions';
 import * as css from './index.less';
 import View from '../../../common/widgets/View';
 import Zoom from '../../../common/widgets/Zoom';
+import LazyLoad from '../../../common/widgets/LazyLoad';
 import Canvas from '../components/Canvas';
 import FlexLayout from '../components/FlexLayout';
 import CssStyle from '../components/CssStyle';
@@ -37,10 +38,13 @@ class Demo extends React.Component {
   constructor(props) {
     super(props);
     this.demos = new Map([['demo1', false],
-    ['demo2', true],
+    ['demo2', false],
     ['demo3', false],
-    ['demo4', false],
-    ['demo5', false]]);
+    ['demo4', true],
+    ['demo5', true],
+    ['demo6', true],
+    ['demo7', true],
+    ['demo8', true]]);
   }
   static defaultProps = {//会和Provider第一次传进来的数据合并之后，进行第一次渲染：provider提供默认值，使用provider提供的默认值；否者使用class自定义的
     data: "default"
@@ -62,20 +66,22 @@ class Demo extends React.Component {
     let demos = this.demos;
     return (
       <View>
-        <fieldset>
+        <fieldset style={{ display: demos.get('demo8') ? 'block' : 'none' }}>
           <legend className={css['legendSecond']}>
             EventCase
           </legend>
           <EventCase />
           <Zoom />
+          <LazyLoad />
         </fieldset>
-        <fieldset>
+        <fieldset style={{ display: demos.get('demo7') ? 'block' : 'none' }}>
           <legend className={css['legendFirst']}>
             Background
           </legend>
           <Background />
         </fieldset>
-        <fieldset className={css['fieldsetSecond']}>
+        <fieldset className={css['fieldsetSecond']}
+        style={{ display: demos.get('demo6') ? 'block' : 'none' }}>
           <legend className={css['legendSecond']}>
             Stroke
           </legend>
