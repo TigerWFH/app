@@ -40,11 +40,12 @@ class Demo extends React.Component {
     this.demos = new Map([['demo1', false],
     ['demo2', false],
     ['demo3', false],
-    ['demo4', true],
-    ['demo5', true],
-    ['demo6', true],
-    ['demo7', true],
-    ['demo8', true]]);
+    ['demo4', false],
+    ['demo5', false],
+    ['demo6', false],
+    ['demo7', false],
+    ['demo8', false],
+    ['demo9', true]]);
   }
   static defaultProps = {//会和Provider第一次传进来的数据合并之后，进行第一次渲染：provider提供默认值，使用provider提供的默认值；否者使用class自定义的
     data: "default"
@@ -61,11 +62,36 @@ class Demo extends React.Component {
   _onScroll(e) {
     e.stopPropagation();
   }
+  _touchStart1 = ()=>{
+    alert(1)
+  }
+  _touchStart2 = ()=>{
+    alert(2)
+  }
+  _touchStart3 = ()=>{
+    alert(3)
+  }
+  _touchStart4 = ()=>{
+    alert(4)
+  }
   render() {
     let { data } = this.props;
     let demos = this.demos;
     return (
       <View>
+        <fieldset style={{ display: demos.get('demo9') ? 'block' : 'none' }}>
+          <legend className={css['legendSecond']}>
+          touchStart：响应顺序和click一致，符合冒泡和捕获规则
+          </legend>
+          <div onTouchStart={this._touchStart1}
+            style={{ border: "1px solid red", height: "400px" }}>
+            1
+            <div style={{ border: "1px solid red", height: "300px" }}
+            onTouchStart={this._touchStart2}>
+              2
+            </div>
+          </div>
+        </fieldset>
         <fieldset style={{ display: demos.get('demo8') ? 'block' : 'none' }}>
           <legend className={css['legendSecond']}>
             EventCase

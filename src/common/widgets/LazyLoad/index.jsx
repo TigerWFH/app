@@ -15,17 +15,15 @@ let isDbug = true;
 class LazyLoad extends React.Component{
   constructor(props){
     super(props);
-    this.window = null;
+    this.scrollParent = null;
     this.scrollTop = 0;
   }
   componentDidMount(){
-    this.window = window;
-    if (this.window !== null){
-      this.window.addEventListener('scroll', this._onHandleScroll);
-      // let this.window.clientInformation();
+    this.scrollParent = window.document;
+    if (this.scrollParent !== null){
+      this.scrollParent.addEventListener('scroll', this._onHandleScroll);
       if (isDbug){
         console.log('add scroll event...');
-        console.log('scrollTop--->', this.scrollTop);
       }
     }
   }
@@ -33,17 +31,22 @@ class LazyLoad extends React.Component{
     if (isDbug){
       console.log('willUnmount');
     }
-    if (this.window){
-      this.window.removeEventListener('scroll', this._onHandleScroll);
-      this.window = null;
+    if (this.scrollParent){
+      this.scrollParent.removeEventListener('scroll', this._onHandleScroll);
+      this.scrollParent = null;
     }
   }
   _onHandleScroll(){
-    let currScrollTop = this.window.screenTop;
     if (isDbug){
       console.log('--->handlescroll');
-      console.log('scroll--->', currScrollTop);
     }
+  }
+  /**
+   * @desc 获取最近的具有overflow:scroll/auto属性的父容器
+   * @elem DOM元素
+   */ 
+  _getScrollParent(elem){
+
   }
   render(){
     return <div id="test"
