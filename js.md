@@ -232,6 +232,47 @@ JSON Schema定义了如何基于JSON格式描述JSON数据结构的规范，进�
 * element.getClientRects()
 
 [一些参考资料](http://blog.sina.com.cn/s/blog_14e2a237b0102w4i0.html)
+## 一些有用的event
+* onload：window.onload等待页面以及资源加载完成，会触发；img.onload等待img.src执行完，会触发。
+* DOMContentLoaded：DOM树构建完毕，会就会触发，先于onload
+## 一些调试函数
+* 展示信息：
+
+        console.log
+        console.info
+        console.warning
+        console.error
+* 占位符
+
+        console.log('%d年%d月', 2017, 7);类似printf
+        console.info('%d年%d月', 2017, 7);类似printf
+        console.warning('%d年%d月', 2017, 7);类似printf
+        console.error('%d年%d月', 2017, 7);类似printf
+* 信息分组
+
+        console.group
+        console.groupEnd
+* 查看对象的属性信息
+
+        console.dir
+* 显式某个节点的内容
+
+        console.dirxml
+* 断言
+
+        console.assert
+* 追踪函数的信息
+
+        console.trace
+* 即时功能
+
+        console.time
+        console.timeEnd
+* 性能分析
+
+        console.profile
+        console.profileEnd
+[参考资料](http://blog.csdn.net/kimsoft/article/details/52275888)
 ## window窗口
 * 版本信息：
 

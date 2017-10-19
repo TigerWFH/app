@@ -16,9 +16,13 @@ class LazyLoad extends React.Component{
   constructor(props){
     super(props);
     this.scrollParent = null;
-    this.scrollTop = 0;
+    this.scrollParentDom = null;
+    this.viewportHeight = 0;
+    this.pageYOffset = 0;
   }
   componentDidMount(){
+    this.viewportHeight = window.innerHeight;
+    this.pageYOffset = window.pageYOffset ? window.pageYOffset : window.scrollY;
     this.scrollParent = window.document;
     if (this.scrollParent !== null){
       this.scrollParent.addEventListener('scroll', this._onHandleScroll);
@@ -49,21 +53,7 @@ class LazyLoad extends React.Component{
 
   }
   render(){
-    return <div id="test"
-    style={{height: "10px", overflowY: 'scroll'}}>
-      lazyload
-      lazyload
-      lazyload
-      lazyload
-      lazyload
-      lazyload
-      lazyload
-      lazyload
-      lazyload
-      lazyload
-      lazyload
-      lazyload
-    </div>
+    return this.props.children;
   }
 }
 
