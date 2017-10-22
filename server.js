@@ -11,7 +11,7 @@ var multer = require('multer');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
-app.use(express.static('./dist'));//设置静态文件路径
+app.use(express.static('./static'));//设置静态文件路径
 
 app.post('/v1/upload', multer({ dest: 'mock/upload/' }).array('video', 2), (req, res, next) => {
 	console.log('req.body--->', req.body);
