@@ -11,6 +11,9 @@ let buildPath = path.join(__dirname, 'dist');
 
 let env = process.env.NODE_ENV === 'development' ?
   'development' : 'production';
+if (env === 'production'){
+  buildPath = path.join(__dirname, 'static');
+}
 module.exports = {
   entry: {
     index: path.join(__dirname, 'src/index.jsx')
