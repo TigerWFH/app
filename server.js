@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 // app.use(express.static('./dist'));//设置静态文件路径
 
-app.post('/v1/upload', multer({ dest: 'upload/' }).array('video', 2), (req, res, next) => {
+app.post('/v1/upload', multer({ dest: 'mock/upload/' }).array('video', 2), (req, res, next) => {
 	console.log('req.body--->', req.body);
 	console.log('req.file--->', req.file);
 });
