@@ -3,7 +3,11 @@
 * 创建日期：2017-8-23
 * 社交媒体：[![twitter](./src/common/res/images/twitter.png)twitter](https://twitter.com)[![weobo](./src/common/res/images/weibo.png)weibo](http://weibo.com/2630232391/profile?topnav=1&wvr=6)
 # js前端自动化工程
-
+## 关于环境env，相关环境有
+* `开发环境development`
+* `测试环境test`
+* `预发环境pre、bata`
+* `生产环境production`
 ## react-router 4.0
 
 * Router(low-level)
@@ -73,14 +77,6 @@
     reducers直接配置到rootReducer，并未进行code splitting，只有UI部分进行了 code splitting。
     
     思考：如何将对应的reducers进行code splitting。
-# test for git log
-# 建立新分支monkey_mm
-# test for git rebase
-# feature-addlog
-# feature-add1
-# feature-add2
-# feature-add3
-# feature-add4
 
         二十加冠，
         三十而立，

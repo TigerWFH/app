@@ -4,8 +4,12 @@
   "description": "js前端自动化工程",
   "main": "index.js",
   "scripts": {
-    "server": "webpack-dev-server --open",
-    "build": "webpack",
+    "dev": "export NODE_ENV=development && webpack-dev-server --open",
+    "beta": "export NODE_ENV=beta && echo \"beta\"",
+    "prod": "export NODE_ENV=production && webpack --process",
+    "server": "export NODE_ENV=development && node server.js",
+    "build": "export NODE_ENV=development && webpack --watch --hide-modules --colors",
+    "buildprd": "export NODE_ENV=production && webpack --hide-modules --colors",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
