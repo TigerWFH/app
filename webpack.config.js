@@ -9,8 +9,8 @@ const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 let srcPath = path.join(__dirname, 'src');
 let buildPath = path.join(__dirname, 'dist');
 
-let env = process.env.NODE_ENV === 'develop' ?
-  'develop' : 'production';
+let env = process.env.NODE_ENV === 'development' ?
+  'development' : 'production';
 module.exports = {
   entry: {
     index: path.join(__dirname, 'src/index.jsx')

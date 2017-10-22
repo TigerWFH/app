@@ -1,17 +1,17 @@
 const path = require('path');
 const fs = require('fs');
-const bodyParser = require('body-parser');
-let express = require('express');
-var app = express();
-
 var crypto = require('crypto');
+let express = require('express');
+
+var app = express();
+const bodyParser = require('body-parser');
 var querystring = require("querystring");
 var multer = require('multer');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
-// app.use(express.static('./dist'));//设置静态文件路径
+app.use(express.static('./dist'));//设置静态文件路径
 
 app.post('/v1/upload', multer({ dest: 'mock/upload/' }).array('video', 2), (req, res, next) => {
 	console.log('req.body--->', req.body);
@@ -23,12 +23,6 @@ app.post('/v1/signon', (req, res, next) => {
 		age: 12
 	});
 });
-app.get('/v1/signon', (req, res, next)=>{
-    res.status(200).json({
-        name: 'test get',
-        age: 12
-    })
-})
 app.all('*', (req, res, next) => {
 	console.log('***I am a APIServer***', req.path);
 	var filePath = `./mock/${req.path}/index.json`;
