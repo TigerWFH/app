@@ -20,11 +20,11 @@ if (env === 'production'){
   prdConfig = {
     plugins: [
       new webpack.HotModuleReplacementPlugin(),
-      // 提取公共库文件
-      new webpack.optimize.CommonsChunkPlugin({
-        name: ['react'],
-        minChunks: Infinity
-      }),
+      // 提取公共库文件,适用于multiple entry point,webpack会打包对应的文件，externals外部包，webpack不处理
+      // new webpack.optimize.CommonsChunkPlugin({
+      //   name: ['react'],
+      //   minChunks: Infinity
+      // }),
       // 代码压缩
       new webpack.optimize.UglifyJsPlugin({
         compress: {
