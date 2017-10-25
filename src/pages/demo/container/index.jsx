@@ -22,6 +22,7 @@ import CaskLayout from '../components/CaskLayout';
 import Stroke from '../components/Stroke';
 import Background from '../components/Background';
 import EventCase from '../components/Event';
+import TouchTest from '../components/TouchTest';
 
 function mapPropsToState(state, ownProps) {
   let { demo } = state;
@@ -73,6 +74,7 @@ class Demo extends React.Component {
           <EventCase />
           <Zoom />
           <LazyLoad />
+          <TouchTest></TouchTest>
         </fieldset>
         <fieldset style={{ display: demos.get('demo7') ? 'block' : 'none' }}>
           <legend className={css['legendFirst']}>
