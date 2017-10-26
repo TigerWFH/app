@@ -83,6 +83,8 @@ webpack中import的本质是什么？代码拷贝？
     reducers直接配置到rootReducer，并未进行code splitting，只有UI部分进行了 code splitting。
     
     思考：如何将对应的reducers进行code splitting。
+## 遇到的新鲜
+* web beacon,即web bug，主要用于追踪信息，用于数据统计。使用express实现了一把，获取web bug所在页面，以及用户的userAgent
 
         二十加冠，
         三十而立，
