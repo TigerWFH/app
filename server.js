@@ -19,6 +19,7 @@ app.get('/v1/beacon', (req, res, next)=>{
 	console.log('req--->', JSON.stringify(req.cookies));
 	console.log('web bug所在页面--->', req.get('Referer'));
 	console.log('UserAgent--->', req.get('User-Agent'));
+	console.log('UserIp--->', req.connection.remoteAddress);
 	res.status(200).json({
 		msgCode: '0'
 	});
