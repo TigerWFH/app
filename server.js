@@ -5,14 +5,25 @@ let express = require('express');
 
 var app = express();
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
 var querystring = require("querystring");
 var multer = require('multer');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
-app.use(express.static('./static'));//设置静态文件路径
-
+app.use(cookieParser());
+// web beacon测试
+app.get('/v1/beacon', (req, res, next)=>{
+	console.log('req--->', JSON.stringify(req.cookies));
+	console.log('web bug所在页面--->', req.get('Referer'));
+	console.log('UserAgent--->', req.get('User-Agent'));
+	res.status(200).json({
+		msgCode: '0'
+	});
+});
+// app.use(express.static('./static'));//设置静态文件路径
 app.post('/v1/upload', multer({ dest: 'mock/upload/' }).array('video', 2), (req, res, next) => {
 	console.log('req.body--->', req.body);
 	console.log('req.file--->', req.file);

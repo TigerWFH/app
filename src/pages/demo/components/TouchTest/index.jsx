@@ -40,6 +40,9 @@ class TouchTest extends React.Component{
       <div onTouchStart={this._onTouchStart}
       onTouchMove={this._onTouchMove}>
       测试TouchMove
+      <img src="http://127.0.0.1:9000/v1/beacon" 
+      width={0}
+      height={0} />
       </div>
     </div>
   }
