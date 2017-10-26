@@ -15,16 +15,17 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(cookieParser());
 // web beacon测试
-app.get('/v1/beacon', (req, res, next)=>{
-	console.log('req--->', JSON.stringify(req.cookies));
-	console.log('web bug所在页面--->', req.get('Referer'));
-	console.log('UserAgent--->', req.get('User-Agent'));
-	console.log('UserIp--->', req.connection.remoteAddress);
+app.get('/v1/beacon/a.gif', (req, res, next)=>{
+	// console.log('req--->', JSON.stringify(req.cookies));
+	// console.log('web bug所在页面--->', req.get('Referer'));
+	// console.log('UserAgent--->', req.get('User-Agent'));
+	// console.log('UserIp--->', req.connection.remoteAddress);
 	res.status(200).json({
 		msgCode: '0'
 	});
+	return;
 });
-// app.use(express.static('./static'));//设置静态文件路径
+app.use(express.static('./static'));//设置静态文件路径
 app.post('/v1/upload', multer({ dest: 'mock/upload/' }).array('video', 2), (req, res, next) => {
 	console.log('req.body--->', req.body);
 	console.log('req.file--->', req.file);
