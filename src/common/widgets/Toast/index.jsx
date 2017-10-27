@@ -13,7 +13,7 @@ import * as ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import * as css from './index.less';
 
-let _time = 10000;//toast展示时间
+let _time = 200000;//toast展示时间
 
 class Toast extends React.Component {
   constructor(props) {
@@ -27,9 +27,19 @@ class Toast extends React.Component {
   /**
    * @desc 根据type，展示不同的toast
    * @type {string} 取值是{info, success, warn, error}
-   * @options
-   */ 
-  static showToast = (type='info', options={})=>{
+   * @options {object} 取值有{content,className, style}
+   */
+  static showToast = (type = 'info', options = {}) => {
+    if (typeof type !== 'string') {
+      let error = new TypeError('参数类型错误');
+      throw error;
+    }
+
+    if (Object.prototype.toString.call(options) !== '[object Object]') {
+      let error = new TypeError('参数类型错误');
+      throw error;
+    }
+
     let _options = {
       content: options.content || '',
       style: options.style || null,
@@ -44,7 +54,9 @@ class Toast extends React.Component {
     let { content, className, style } = this.props;
     return <div className={className}
       style={style}>
-      {this.props.content}
+      <div className={css['content']}>
+        {this.props.content}
+      </div>
     </div>
   }
 }
