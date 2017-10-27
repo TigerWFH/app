@@ -14,6 +14,7 @@ import * as Actions from '../actions';
 import * as css from './index.less';
 import View from '../../../common/widgets/View';
 import Zoom from '../../../common/widgets/Zoom';
+import Toast from '../../../common/widgets/Toast';
 import LazyLoad from '../../../common/widgets/LazyLoad';
 import Canvas from '../components/Canvas';
 import FlexLayout from '../components/FlexLayout';
@@ -62,6 +63,9 @@ class Demo extends React.Component {
   _onScroll(e) {
     e.stopPropagation();
   }
+  _onTestToast = ()=>{
+    Toast.showToast('info', {content: "showToast"});
+  }
   render() {
     let { data } = this.props;
     let demos = this.demos;
@@ -71,6 +75,9 @@ class Demo extends React.Component {
           <legend className={css['legendSecond']}>
             EventCase
           </legend>
+          <button onClick={this._onTestToast}>
+            btn
+          </button>
           <EventCase />
           <Zoom />
           <LazyLoad />

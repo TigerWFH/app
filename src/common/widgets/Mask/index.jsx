@@ -6,3 +6,19 @@
  * @modify Date:
  * @function:   
  */
+
+ import * as React from 'react';
+
+ class Mask extends React.Component{
+   constructor(props){
+     super(props);
+   }
+
+   render(){
+     return <div>
+
+     </div>
+   }
+ }
+
+ export default Mask;
