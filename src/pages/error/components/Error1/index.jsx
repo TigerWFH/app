@@ -1,3 +1,17 @@
+/**
+ * @name:      Error1
+ * @author:     Monkey
+ * @email:      334080374@qq.com
+ * @date:       2017-10-30
+ * @modify Date:
+ * @function:   
+ */
+
+/**
+ * isSoluted: true，解决方案；false，重现问题
+ */  
+ let isSoluted = true;
+
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 class Error1 extends React.Component{
@@ -14,13 +28,28 @@ class Error1 extends React.Component{
     }, 2000);
   }
   componentDidMount(){
+    if (isSoluted){
+      this._isMounted = true;
+    }
   }
   componentWillUnmount(){
-    let timer = setTimeout(()=>{
-      this.setState({
-        demo: 'Unmount'
-      });
-    }, 3000)
+    if (isSoluted){
+      this._isMounted = false;
+      let timer = setTimeout(()=>{
+        if (this._isMounted){
+          this.setState({
+            demo: 'Unmount'
+          });
+        }
+      }, 3000)
+    }
+    else{
+      let timer = setTimeout(()=>{
+          this.setState({
+            demo: 'Unmount'
+          });
+      }, 3000)
+    }
   }
   render(){
     let style = {
