@@ -61,7 +61,6 @@ class Demo extends React.Component {
     let result = util.isDomInViewport(elem);
     console.log("top:%d,left:%d", top, left);
     console.log("height:%d,scrollTop:%d", window.innerHeight, window.pageYOffset)
-    alert(result);
   }
   _onSendTest = (e) => {
     let { sendTest } = this.props;
