@@ -14,6 +14,7 @@ import * as Actions from '../actions';
 import * as css from './index.less';
 import View from '../../../common/widgets/View';
 import Zoom from '../../../common/widgets/Zoom';
+import Toast from '../../../common/widgets/Toast';
 import LazyLoad from '../../../common/widgets/LazyLoad';
 import Canvas from '../components/Canvas';
 import FlexLayout from '../components/FlexLayout';
@@ -22,6 +23,7 @@ import CaskLayout from '../components/CaskLayout';
 import Stroke from '../components/Stroke';
 import Background from '../components/Background';
 import EventCase from '../components/Event';
+import TouchTest from '../components/TouchTest';
 
 import util from '../../../common/utils';
 
@@ -53,9 +55,9 @@ class Demo extends React.Component {
   static defaultProps = {//会和Provider第一次传进来的数据合并之后，进行第一次渲染：provider提供默认值，使用provider提供的默认值；否者使用class自定义的
     data: "default"
   }
-  componentDidMount(){
+  componentDidMount() {
     let elem = document.getElementById('mytest');
-    let {top, left, width} = elem.getBoundingClientRect();
+    let { top, left, width } = elem.getBoundingClientRect();
     let result = util.isDomInViewport(elem);
     console.log("top:%d,left:%d", top, left);
     console.log("height:%d,scrollTop:%d", window.innerHeight, window.pageYOffset)
@@ -73,19 +75,22 @@ class Demo extends React.Component {
   _onScroll(e) {
     e.stopPropagation();
   }
-  _touchStart1 = ()=>{
+  _touchStart1 = () => {
     alert(1)
   }
-  _touchStart2 = ()=>{
+  _touchStart2 = () => {
     alert(2)
   }
-  _onAddEventTest = ()=>{
+  _onAddEventTest = () => {
     this.count++;
     let elem = document.getElementById('test');
     if (this.count === 1)
-    elem.addEventListener('click', this._touchStart1)
+      elem.addEventListener('click', this._touchStart1)
     else
-    elem.addEventListener('click', this._touchStart2)
+      elem.addEventListener('click', this._touchStart2)
+  }
+  _onTestToast = ()=>{
+    Toast.showToast('info', {content: "showToast"});
   }
   render() {
     let { data } = this.props;
@@ -94,14 +99,14 @@ class Demo extends React.Component {
       <View>
         <fieldset style={{ display: demos.get('demo9') ? 'block' : 'none' }}>
           <legend className={css['legendSecond']}>
-          touchStart：响应顺序和click一致，符合冒泡和捕获规则
+            touchStart：响应顺序和click一致，符合冒泡和捕获规则
           </legend>
           <div id="test" onTouchStart={this._touchStart1}
             style={{ border: "1px solid red", height: "400px" }}>
             1
             <div style={{ border: "1px solid red", height: "300px" }}
-            onClick={this._onAddEventTest}
-            onTouchStart={this._touchStart2}>
+              onClick={this._onAddEventTest}
+              onTouchStart={this._touchStart2}>
               2
             </div>
           </div>
@@ -110,46 +115,50 @@ class Demo extends React.Component {
           <legend className={css['legendSecond']}>
             EventCase
           </legend>
-          {/* <EventCase />
-          <Zoom /> */}
           <LazyLoad>
             <div>
-            <img width='500px'
-              height='500px'
-              alt="1"
-              src=""
-              data-src="https://www.taobao.com" />
-            <img width='500px'
-              height='500px'
-              alt="2"
-              data-src="https://www.taobao.com" />
-            <img width='500px'
-              height='500px'
-              alt="3"
-              src=""
-              data-src="https://www.taobao.com" />
-            <img width='500px'
-              height='500px'
-              alt="4"
-              src=""
-              data-src="https://www.taobao.com" />
-            <img width='500px'
-              height='500px'
-              alt="5"
-              src=""
-              data-src="https://www.taobao.com" />
-            <img width='500px'
-              height='500px'
-              alt="6"
-              src=""
-              data-src="https://www.taobao.com" />
-            <img width='500px'
-              height='500px'
-              alt="7"
-              src=""
-              data-src="https://www.taobao.com" />
-              </div>
+              <img width='500px'
+                height='500px'
+                alt="1"
+                src=""
+                data-src="https://www.taobao.com" />
+              <img width='500px'
+                height='500px'
+                alt="2"
+                data-src="https://www.taobao.com" />
+              <img width='500px'
+                height='500px'
+                alt="3"
+                src=""
+                data-src="https://www.taobao.com" />
+              <img width='500px'
+                height='500px'
+                alt="4"
+                src=""
+                data-src="https://www.taobao.com" />
+              <img width='500px'
+                height='500px'
+                alt="5"
+                src=""
+                data-src="https://www.taobao.com" />
+              <img width='500px'
+                height='500px'
+                alt="6"
+                src=""
+                data-src="https://www.taobao.com" />
+              <img width='500px'
+                height='500px'
+                alt="7"
+                src=""
+                data-src="https://www.taobao.com" />
+            </div>
           </LazyLoad>
+          <button onClick={this._onTestToast}>
+            btn
+          </button>
+          <EventCase />
+          <Zoom />
+          <TouchTest></TouchTest>
         </fieldset>
         <fieldset style={{ display: demos.get('demo7') ? 'block' : 'none' }}>
           <legend className={css['legendFirst']}>
@@ -158,7 +167,7 @@ class Demo extends React.Component {
           <Background />
         </fieldset>
         <fieldset className={css['fieldsetSecond']}
-        style={{ display: demos.get('demo6') ? 'block' : 'none' }}>
+          style={{ display: demos.get('demo6') ? 'block' : 'none' }}>
           <legend className={css['legendSecond']}>
             Stroke
           </legend>
@@ -169,7 +178,7 @@ class Demo extends React.Component {
           <legend className={css['legendFirst']}>
             CaskLayout
           </legend>
-          <CaskLayout imgList={[]}/>
+          <CaskLayout imgList={[]} />
           <div id="mytest">Test</div>
         </fieldset>
         <fieldset className={css['fieldsetSecond']}

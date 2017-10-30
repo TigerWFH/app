@@ -1,9 +1,9 @@
 /**
- * @title:      less
+ * @name:      LazyLoad
  * @author:     Monkey
  * @email:      334080374@qq.com
  * @date:       2017-10-18
- * @modify Date: 
+ * @modify Date:2017-10-27
  * @more:      
  *          1、window.getComputedStyle
  *          2、IntersectionObserver API:用来监控DOM元素是否进入可视区域

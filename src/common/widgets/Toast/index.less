@@ -1,0 +1,28 @@
+.base{
+  display: flex;
+  position: fixed;
+  top: 100px;
+  right: 100px;
+  width: 300px;
+  height: 80px;
+  color: #fff;
+  font-size: 14px;
+  text-align: center;
+  align-items: center;
+  border-radius: 4px;
+}
+.info:extend(.base){
+  background: rgba(0,163,254,0.8);
+}
+.warn:extend(.base){
+  background: rgba(254,204,85,0.8);
+}
+.success:extend(.base){
+  background: rgba(0,178,119,0.8);
+}
+.error:extend(.base){
+  background: rgba(255,65,87,0.8);
+}
+.content{
+  flex-basis: 100%;
+}

@@ -1,11 +1,12 @@
 /**
- * @title:      app store
+ * @name:       Zoom
  * @author:     Monkey
  * @email:      334080374@qq.com
  * @date:       2017-9-13
  * @modify Date: 
  * @function: img尽量使用1:1，否者可能会出现裁剪
  */
+
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import * as css from './index.less';
