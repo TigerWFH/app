@@ -31,9 +31,19 @@ class Toast extends React.Component {
   /**
    * @desc 根据type，展示不同的toast
    * @type {string} 取值是{info, success, warn, error}
-   * @options
-   */ 
-  static showToast = (type='info', options={})=>{
+   * @options {object} 取值有{content,className, style}
+   */
+  static showToast = (type = 'info', options = {}) => {
+    if (typeof type !== 'string') {
+      let error = new TypeError('参数类型错误');
+      throw error;
+    }
+
+    if (Object.prototype.toString.call(options) !== '[object Object]') {
+      let error = new TypeError('参数类型错误');
+      throw error;
+    }
+
     let _options = {
       content: options.content || '',
       style: options.style || null,
