@@ -18,10 +18,6 @@ let _time = 2000;//toast展示时间
 class Toast extends React.Component {
   constructor(props) {
     super(props);
-    this._isMounted = true;
-    this.state = {
-      test: 'lalal'
-    };
   }
   static propTypes = {
     className: PropTypes.string,
@@ -53,31 +49,12 @@ class Toast extends React.Component {
     _getInstance(_options);
     setTimeout(_closeToast, _time);
   }
-  componentDidMount(){
-    this._isMounted = true;
-    console.log('did:%s',  this._isMounted)
-  }
-
-  componentWillUnmount(){
-    
-    this._isMounted = false;
-    console.log('unmount: %s', this._isMounted)
-    // 模拟出来的一个错误，组件已经卸载，不能再update
-    let timer = setTimeout(()=>{
-      if (!this._isMounted){
-        this.setState({
-          test: 'test'
-        });
-      }
-    }, 3000)
-  }
 
   render() {
     let { content, className, style } = this.props;
     return <div className={className}
       style={style}>
       {this.props.content}
-      <div>{this.state.test}</div>
     </div>
   }
 }
