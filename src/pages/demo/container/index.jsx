@@ -42,15 +42,15 @@ class Demo extends React.Component {
   constructor(props) {
     super(props);
     this.count = 0;
-    this.demos = new Map([['demo1', false],
-    ['demo2', false],
-    ['demo3', false],
-    ['demo4', false],
-    ['demo5', true],
-    ['demo6', true],
-    ['demo7', true],
-    ['demo8', true],
-    ['demo9', true]]);
+    this.demos = new Map([['demo1', false],/*Initial Demo*/
+    ['demo2', false],/*Canvas绘图*/
+    ['demo3', false],/*flex属性的尝试*/
+    ['demo4', false],/*css实现一些多边形*/
+    ['demo5', false],/*css实现木桶布局*/
+    ['demo6', false],/*css实现一些描边效果*/
+    ['demo7', false],/*css实现一些背景效果*/
+    ['demo8', false],/*LazyLoad，EventCase，Zoom*/
+    ['demo9', true]]);/*测试touchStart等事件*/
   }
   static defaultProps = {//会和Provider第一次传进来的数据合并之后，进行第一次渲染：provider提供默认值，使用provider提供的默认值；否者使用class自定义的
     data: "default"
@@ -109,6 +109,7 @@ class Demo extends React.Component {
               2
             </div>
           </div>
+          <TouchTest></TouchTest>
         </fieldset>
         <fieldset style={{ display: demos.get('demo8') ? 'block' : 'none' }}>
           <legend className={css['legendSecond']}>
@@ -157,7 +158,6 @@ class Demo extends React.Component {
           </button>
           <EventCase />
           <Zoom />
-          <TouchTest></TouchTest>
         </fieldset>
         <fieldset style={{ display: demos.get('demo7') ? 'block' : 'none' }}>
           <legend className={css['legendFirst']}>
