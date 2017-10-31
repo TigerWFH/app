@@ -9,49 +9,77 @@
 
 /**
  * isSoluted: true，解决方案；false，重现问题
- */  
- let isSoluted = true;
+ */
+let isSoluted = true;
 
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-class Error1 extends React.Component{
-  constructor(props){
+
+class Demo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      text: 'DemoDefault'
+    };
+  }
+
+  changeText = () => {
+    console.log('Demo:%s', this.state.text);
+    this.setState({
+      text: 'changeDemoText'
+    });
+  }
+
+  render() {
+    return <div>
+      {this.state.text}
+    </div>
+  }
+}
+
+
+class Error1 extends React.Component {
+  constructor(props) {
     super(props);
     this.state = {
       demo: 'defaultDemo'
     };
   }
-  static show(){
+  static show() {
     let instance = _getInstance();
-    let timer = setTimeout(()=>{
+    let timer = setTimeout(() => {
       _close();
     }, 2000);
   }
-  componentDidMount(){
-    if (isSoluted){
+  componentDidMount() {
+    if (isSoluted) {
       this._isMounted = true;
     }
   }
-  componentWillUnmount(){
-    if (isSoluted){
+  componentWillUnmount() {
+    this.demo.changeText();
+    setTimeout(()=>{
+      this.demo.changeText();
+    }, 300);
+    if (isSoluted) {
       this._isMounted = false;
-      let timer = setTimeout(()=>{
-        if (this._isMounted){
+      let timer = setTimeout(() => {
+        if (this._isMounted) {
           this.setState({
             demo: 'Unmount'
           });
         }
       }, 3000)
     }
-    else{
-      let timer = setTimeout(()=>{
-          this.setState({
-            demo: 'Unmount'
-          });
+    else {
+      let timer = setTimeout(() => {
+        this.setState({
+          demo: 'Unmount'
+        });
       }, 3000)
     }
   }
-  render(){
+  render() {
     let style = {
       position: 'fixed',
       top: 0,
@@ -62,6 +90,7 @@ class Error1 extends React.Component{
       textAlign: 'center'
     }
     return <div style={style}>
+      <Demo ref={demo => this.demo = demo} />
       {this.state.demo}
     </div>
   }
@@ -72,9 +101,9 @@ export default Error1;
 let _container = null;
 let _instance = null;
 
-function _getInstance(){
-  if (_instance === null){
-    if (_container === null){
+function _getInstance() {
+  if (_instance === null) {
+    if (_container === null) {
       _container = document.createElement('div');
       document.body.appendChild(_container);
     }
@@ -84,10 +113,10 @@ function _getInstance(){
   return _instance;
 }
 
-function _close(){
-  if (_instance){
+function _close() {
+  if (_instance) {
     let result = ReactDOM.unmountComponentAtNode(_container);
-    if (result){
+    if (result) {
       _instance = null;
     }
   }
