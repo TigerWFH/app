@@ -1,9 +1,9 @@
 .base{
   display: flex;
   display: -webkit-flex;
+  display: -ms-flexbox;/*兼容IE*/
   display: -webkit-box;
   display: -moz-box;/*firefox*/
-  display: -ms-flexbox;/*兼容IE*/
   position: fixed;
   top: 100px;
   right: 100px;
@@ -12,8 +12,15 @@
   color: #fff;
   font-size: 14px;
   text-align: center;
-  align-items: center;
+  justify-content: center;/*水平居中*/
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  -moz-box-pack: center;
   -webkit-box-pack: center;/*兼容水平居中*/
+  align-items: center;/*垂直居中*/
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  -moz-box-align: center;
   -webkit-box-align: center;/*兼容垂直居中*/
   border-radius: 4px;
 }
