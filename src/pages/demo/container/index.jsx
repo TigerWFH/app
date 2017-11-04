@@ -15,6 +15,7 @@ import * as css from './index.less';
 import View from '../../../common/widgets/View';
 import Zoom from '../../../common/widgets/Zoom';
 import Toast from '../../../common/widgets/Toast';
+import Mask from '../../../common/widgets/Mask';
 import LazyLoad from '../../../common/widgets/LazyLoad';
 import Canvas from '../components/Canvas';
 import FlexLayout from '../components/FlexLayout';
@@ -118,6 +119,7 @@ class Demo extends React.Component {
           <button onClick={this._onTestToast}>
             btn
           </button>
+          <Mask />
           <EventCase />
           <Zoom />
         </fieldset>

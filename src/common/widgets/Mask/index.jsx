@@ -8,6 +8,7 @@
  */
 
  import * as React from 'react';
+ import * as css from './index.less';
 
  class Mask extends React.Component{
    constructor(props){
@@ -15,8 +16,8 @@
    }
 
    render(){
-     return <div>
-
+     return <div className={css['mask']}>
+       Loading
      </div>
    }
  }
