@@ -1,5 +1,9 @@
 .base{
   display: flex;
+  display: -webkit-flex;
+  display: -webkit-box;
+  display: -moz-box;/*firefox*/
+  display: -ms-flexbox;/*兼容IE*/
   position: fixed;
   top: 100px;
   right: 100px;
@@ -9,6 +13,8 @@
   font-size: 14px;
   text-align: center;
   align-items: center;
+  -webkit-box-pack: center;/*兼容水平居中*/
+  -webkit-box-align: center;/*兼容垂直居中*/
   border-radius: 4px;
 }
 .info:extend(.base){

@@ -49,8 +49,8 @@ class Demo extends React.Component {
     ['demo5', false],/*css实现木桶布局*/
     ['demo6', false],/*css实现一些描边效果*/
     ['demo7', false],/*css实现一些背景效果*/
-    ['demo8', false],/*LazyLoad，EventCase，Zoom*/
-    ['demo9', true]]);/*测试touchStart等事件*/
+    ['demo8', true],/*LazyLoad，EventCase，Zoom*/
+    ['demo9', false]]);/*测试touchStart等事件*/
   }
   static defaultProps = {//会和Provider第一次传进来的数据合并之后，进行第一次渲染：provider提供默认值，使用provider提供的默认值；否者使用class自定义的
     data: "default"

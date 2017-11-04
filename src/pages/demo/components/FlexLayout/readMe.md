@@ -32,7 +32,7 @@ flex-basis：设定弹性框伸缩的基准值，子元素的宽度
 flex：flex-grow,flex-shrink,flex-basis缩写
 
 旧语法(-webkit,-moz)：
-box-flex：定义是否允许d当前子元素伸缩，--flex-grow
+box-flex：定义是否允许当前子元素伸缩，--flex-grow
 box-ordinal-group：定义元素的显示顺序，越小越考前，--order
 
 

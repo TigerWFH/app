@@ -4,8 +4,9 @@
  * @email:      334080374@qq.com
  * @date:       2017-10-27
  * @modify Date:
- * @function: 暴露四个接口:
- *          Toast.success(),Toast.info(),Toast.warn(),Toast.error()
+ * @function: 暴露一个个接口:showToast(type, options)
+ * 
+ *          
  */
 
 import * as React from 'react';
@@ -13,7 +14,7 @@ import * as ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import * as css from './index.less';
 
-let _time = 2000;//toast展示时间
+let _time = 20000;//toast展示时间
 
 class Toast extends React.Component {
   constructor(props) {
@@ -41,7 +42,7 @@ class Toast extends React.Component {
     }
 
     let _options = {
-      content: options.content || '',
+      content: options.content || 'i am toast!',
       style: options.style || null,
       className: options.className || css[type]
     }
@@ -54,7 +55,9 @@ class Toast extends React.Component {
     let { content, className, style } = this.props;
     return <div className={className}
       style={style}>
-      {this.props.content}
+      <div className={css['content']}>
+        {this.props.content}
+      </div>
     </div>
   }
 }
