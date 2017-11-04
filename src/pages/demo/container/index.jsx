@@ -115,44 +115,6 @@ class Demo extends React.Component {
           <legend className={css['legendSecond']}>
             EventCase
           </legend>
-          <LazyLoad>
-            <div>
-              <img width='500px'
-                height='500px'
-                alt="1"
-                src=""
-                data-src="https://www.taobao.com" />
-              <img width='500px'
-                height='500px'
-                alt="2"
-                data-src="https://www.taobao.com" />
-              <img width='500px'
-                height='500px'
-                alt="3"
-                src=""
-                data-src="https://www.taobao.com" />
-              <img width='500px'
-                height='500px'
-                alt="4"
-                src=""
-                data-src="https://www.taobao.com" />
-              <img width='500px'
-                height='500px'
-                alt="5"
-                src=""
-                data-src="https://www.taobao.com" />
-              <img width='500px'
-                height='500px'
-                alt="6"
-                src=""
-                data-src="https://www.taobao.com" />
-              <img width='500px'
-                height='500px'
-                alt="7"
-                src=""
-                data-src="https://www.taobao.com" />
-            </div>
-          </LazyLoad>
           <button onClick={this._onTestToast}>
             btn
           </button>
