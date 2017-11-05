@@ -7,19 +7,29 @@
  * @function:   
  */
 
- import * as React from 'react';
- import * as css from './index.less';
+import * as React from 'react';
+import PropTypes from 'prop-types';
+import * as css from './index.less';
 
- class Mask extends React.Component{
-   constructor(props){
-     super(props);
-   }
+class Mask extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
-   render(){
-     return <div className={css['mask']}>
-       Loading
-     </div>
-   }
- }
+  static propTypes = {
+    className: PropTypes.string,
+    style: PropTypes.object,
+    content: PropTypes.oneOfType([PropTypes.string, PropTypes.element])
+  };
+  render() {
+    let { className, style, content } = this.props;
+    return (
+      <div className={className || css['mask']}
+        style={style || null}>
+        {content || 'Loading'}
+      </div>
+    )
+  }
+}
 
- export default Mask;
+export default Mask;
