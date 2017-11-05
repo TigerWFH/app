@@ -8,6 +8,7 @@
  */
 
 import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import * as css from './index.less';
 
@@ -21,6 +22,15 @@ class Mask extends React.Component {
     style: PropTypes.object,
     content: PropTypes.oneOfType([PropTypes.string, PropTypes.element])
   };
+
+  static show(options = {}){
+    _getInstance();
+  }
+
+  static hide(){
+    _close();
+  }
+
   render() {
     let { className, style, content } = this.props;
     return (
@@ -33,3 +43,26 @@ class Mask extends React.Component {
 }
 
 export default Mask;
+
+let _instance = null;
+let _container = null;
+
+function _getInstance(options = {}) {
+  if (!_instance) {
+    if (!_container) {
+      _container = document.createElement('div');
+      document.body.appendChild(_container);
+    }
+
+    _instance = ReactDOM.render(<Mask {...options} />, _container);
+  }
+
+  return _instance;
+}
+
+function _close() {
+  if (_instance) {
+    ReactDOM.unmountComponentAtNode(_container);
+    _instance = null;
+  }
+}

@@ -89,8 +89,14 @@ class Demo extends React.Component {
     else
       elem.addEventListener('click', this._touchStart2)
   }
-  _onTestToast = ()=>{
-    Toast.showToast('info', {content: "showToast"});
+  _onTestToast = () => {
+    Toast.showToast('info', { content: "showToast" });
+  }
+  _onShowMask = () => {
+    Mask.show();
+    setTimeout(()=>{
+      Mask.hide();
+    }, 3000);
   }
   render() {
     let { data } = this.props;
@@ -117,9 +123,11 @@ class Demo extends React.Component {
             EventCase
           </legend>
           <button onClick={this._onTestToast}>
-            btn
+            Toast
           </button>
-          <Mask />
+          <button onClick={this._onShowMask}>
+            showMask
+          </button>
           <EventCase />
           <Zoom />
         </fieldset>
