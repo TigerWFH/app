@@ -100,10 +100,19 @@ class Demo extends React.Component {
     }, 3000);
   }
   _onDialog = () => {
-    Dialog.show();
-    setTimeout(()=>{
-      Dialog.close();
-    }, 3000);
+    let self = this;/*替换不替换，都可以正确的识别*/
+    let elem = <div onClick={this.Test}>
+      Dialog
+    </div>;
+    Dialog.show({
+      content: elem
+    });
+    // setTimeout(()=>{
+    //   Dialog.close();
+    // }, 3000);
+  }
+  Test = ()=>{
+    alert('test');
   }
   render() {
     let { data } = this.props;

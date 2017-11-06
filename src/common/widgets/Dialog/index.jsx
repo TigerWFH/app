@@ -24,19 +24,30 @@ class Dialog extends React.Component {
         content: PropTypes.oneOfType([PropTypes.string, PropTypes.element])
     };
 
-    static show(options = {}){
+    static show(options = {}) {
         let instance = _getInstance(options);
     }
 
-    static close(){
+    static close() {
         _close();
     }
 
     render() {
+        let { className, style, content, title } = this.props;
+        let _style = {
+            width: '50%'
+        };
         return (
             <div className={css['dialog']}>
-                <div className={css['content']}>
-                    Dialog
+                <div>{title || 'defaultTitle'}</div>
+                {content || 'defaultDialog'}
+                <div>
+                    <button style={_style}>
+                        OK
+                    </button>
+                    <button style={_style}>
+                        Cancel
+                    </button>
                 </div>
             </div>
         )
@@ -48,21 +59,21 @@ export default Dialog;
 let _instance = null;
 let _container = null;
 
-function _getInstance(options = {}){
-    if (!_instance){
-        if (!_container){
+function _getInstance(options = {}) {
+    if (!_instance) {
+        if (!_container) {
             _container = document.createElement('div');
             document.body.appendChild(_container);
         }
 
-        _instance = ReactDOM.render(<Dialog {...options}/>, _container)
+        _instance = ReactDOM.render(<Dialog {...options} />, _container)
     }
 
     return _instance;
 }
 
-function _close(){
-    if (_instance){
+function _close() {
+    if (_instance) {
         ReactDOM.unmountComponentAtNode(_container);
         _instance = null;
     }
