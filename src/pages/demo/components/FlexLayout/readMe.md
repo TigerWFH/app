@@ -46,7 +46,29 @@ display: -ms-flexbox; /* TWEENER - IE 10 */
 display: -webkit-flex; /* NEW - Chrome */ 
 display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
 ```
+# box
+```
+box-orient: horizontal | vertical | inline-axis | block-axis;元素排列方向
+box-direction: normal | reverse;
 
+box-pack: start | end | center | justify;
+box-align: start | end | center | baseline | stretch;
+box-flex: flex-grow?;
+box-ordinal-group: 展示位置;
+box-lines:;
+
+```
+# flex
+```
+flex-direction: row | row-reverse | column | column-reverse;
+flex-wrap: nowrap | wrap | wrap-reverse;
+flex-flow: flex-direction和flex-wrap的简写;
+justify-content: flex-start | flex-end | center | space-between | space-around;
+align-items: flex-start | flex-end | center | baseline | stretch;
+align-self: 类似align-items;
+flex: 伸缩比例;
+order:
+```
 # 注意：
 * 设置为flex之后，子元素的float,clear,vertical-align属性失效。
 
