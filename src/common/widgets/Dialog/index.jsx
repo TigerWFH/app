@@ -39,15 +39,19 @@ class Dialog extends React.Component {
         };
         return (
             <div className={css['dialog']}>
-                <div>{title || 'defaultTitle'}</div>
-                {content || 'defaultDialog'}
-                <div>
-                    <button style={_style}>
-                        OK
+                <div className={css['content']}>
+                    <div className={css['item']}>
+                        {title || 'defaultTitle'}
+                    </div>
+                    {content || 'defaultDialog'}
+                    <div className={css['item']}>
+                        <button style={_style}>
+                            OK
                     </button>
-                    <button style={_style}>
-                        Cancel
+                        <button style={_style}>
+                            Cancel
                     </button>
+                    </div>
                 </div>
             </div>
         )
