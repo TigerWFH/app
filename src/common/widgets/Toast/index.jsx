@@ -30,7 +30,7 @@ class Toast extends React.Component {
    * @type {string} 取值是{info, success, warn, error}
    * @options {object} 取值有{content,className, style}
    */
-  static showToast = (type = 'info', options = {}) => {
+  static show = (type = 'info', options = {}) => {
     if (typeof type !== 'string') {
       let error = new TypeError('参数类型错误');
       throw error;
@@ -48,7 +48,7 @@ class Toast extends React.Component {
     }
 
     _getInstance(_options);
-    setTimeout(_closeToast, _time);
+    setTimeout(_close, _time);
   }
 
   render() {
@@ -79,7 +79,7 @@ function _getInstance(options) {
   return _instance;
 }
 
-function _closeToast() {
+function _close() {
   if (_container) {
     ReactDOM.unmountComponentAtNode(_container);
     _instance = null;

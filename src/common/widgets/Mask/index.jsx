@@ -27,7 +27,7 @@ class Mask extends React.Component {
     _getInstance();
   }
 
-  static hide(){
+  static close(){
     _close();
   }
 

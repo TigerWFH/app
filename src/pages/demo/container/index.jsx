@@ -16,6 +16,7 @@ import View from '../../../common/widgets/View';
 import Zoom from '../../../common/widgets/Zoom';
 import Toast from '../../../common/widgets/Toast';
 import Mask from '../../../common/widgets/Mask';
+import Dialog from '../../../common/widgets/Dialog';
 import LazyLoad from '../../../common/widgets/LazyLoad';
 import Canvas from '../components/Canvas';
 import FlexLayout from '../components/FlexLayout';
@@ -90,12 +91,18 @@ class Demo extends React.Component {
       elem.addEventListener('click', this._touchStart2)
   }
   _onTestToast = () => {
-    Toast.showToast('info', { content: "showToast" });
+    Toast.show('info', { content: "showToast" });
   }
   _onShowMask = () => {
     Mask.show();
     setTimeout(()=>{
-      Mask.hide();
+      Mask.close();
+    }, 3000);
+  }
+  _onDialog = () => {
+    Dialog.show();
+    setTimeout(()=>{
+      Dialog.close();
     }, 3000);
   }
   render() {
@@ -126,7 +133,10 @@ class Demo extends React.Component {
             Toast
           </button>
           <button onClick={this._onShowMask}>
-            showMask
+            Mask
+          </button>
+          <button onClick={this._onDialog}>
+            Dialog
           </button>
           <EventCase />
           <Zoom />
