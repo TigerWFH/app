@@ -1,19 +1,20 @@
 .mask{
-    display: flex;
-    display: -webkit-flex;
-    display: -ms-flexbox;
     display: -webkit-box;
-    display: -moz-box;
-    justify-content: center;/*水平居中*/
-    -webkit-justify-content: center;
+    display: -moz-box;/*firefox*/
+    display: -ms-flexbox;/*兼容IE*/
+    display: -webkit-flex;
+    display: flex;
+    -moz-box-pack: center;
+    -webkit-box-pack: center;/*兼容水平居中*/
     -ms-flex-pack: center;
-    -webkit-box-pack: center;
-    -moz-box-pack: center;/*水平居中*/
-    align-items: center;/*垂直居中*/
-    -webkit-align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;/*水平居中*/
+    -moz-box-align: center;
+    -webkit-box-align: center;/*兼容垂直居中*/
     -ms-flex-align: center;
-    -webkit-box-align: center;
-    -moz-box-align: center;/*垂直居中*/
+    -webkit-align-items: center;
+    align-items: center;/*垂直居中*/
+
     position: fixed;
     top: 0;
     right: 0;

@@ -2,11 +2,22 @@
 其实最外层可以直接使用div布局，不一定要使用flex布局的
 */ 
 .base{
-  display: flex;
-  display: -webkit-flex;
-  display: -ms-flexbox;/*兼容IE*/
   display: -webkit-box;
   display: -moz-box;/*firefox*/
+  display: -ms-flexbox;/*兼容IE*/
+  display: -webkit-flex;
+  display: flex;
+  -moz-box-pack: center;
+  -webkit-box-pack: center;/*兼容水平居中*/
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;/*水平居中*/
+  -moz-box-align: center;
+  -webkit-box-align: center;/*兼容垂直居中*/
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;/*垂直居中*/
+
   position: fixed;
   top: 100px;
   right: 100px;
@@ -15,16 +26,6 @@
   color: #fff;
   font-size: 14px;
   text-align: center;
-  justify-content: center;/*水平居中*/
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  -moz-box-pack: center;
-  -webkit-box-pack: center;/*兼容水平居中*/
-  align-items: center;/*垂直居中*/
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  -moz-box-align: center;
-  -webkit-box-align: center;/*兼容垂直居中*/
   border-radius: 4px;
 }
 .info:extend(.base){

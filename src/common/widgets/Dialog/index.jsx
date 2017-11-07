@@ -35,16 +35,18 @@ class Dialog extends React.Component {
     render() {
         let { className, style, content, title } = this.props;
         let _style = {
-            width: '50%'
+            width: '30%'
         };
         return (
             <div className={css['dialog']}>
                 <div className={css['content']}>
-                    <div className={css['item']}>
-                        {title || 'defaultTitle'}
+                    <div className={css['title']}>
+                        {title || 'defaultTitledefaultTitledefaultTitledefaultTitledefaultTitledefaultTitle'}
                     </div>
-                    {content || 'defaultDialog'}
-                    <div className={css['item']}>
+                    <div className={css['message']}>
+                        {content || 'defaultDialog'}
+                    </div>
+                    <div className={css['footer']}>
                         <button style={_style}>
                             OK
                     </button>
