@@ -50,7 +50,7 @@ class Demo extends React.Component {
     ['demo4', false],/*css实现一些多边形*/
     ['demo5', false],/*css实现木桶布局*/
     ['demo6', false],/*css实现一些描边效果*/
-    ['demo7', false],/*css实现一些背景效果*/
+    ['demo7', true],/*css实现一些背景效果*/
     ['demo8', true],/*LazyLoad，EventCase，Zoom*/
     ['demo9', false]]);/*测试touchStart等事件*/
   }
