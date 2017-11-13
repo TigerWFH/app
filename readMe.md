@@ -123,6 +123,35 @@ webpack中import的本质是什么？代码拷贝？
         查看文件权限：ls -la
         修改权限: chmod 760 filename；chmod o+r filename ...
         修改归属: chown
+## 浏览器缓存知识
+* 缓存命中（cache hit）
+* 缓存未命中（cache miss）
+* 再验证（revalidation）
+* 再验证命中（revalidation hit）
+* 浏览器缓存对缓存对象的副本进行再验证，会向原始服务器发送一个小的再验证请求。`实体标签`和`最近修改时间`是用来对已经缓存对象进行`验证工具`
+* 浏览器会自动缓存get请求,Cache-Control、`实体标签`、`最近修改时间`
+```
+第一次请求：
+请求头：
+        Cache-Control: no-cache;
+响应头：
+        Cache-Control: public,max-age=0
+        ETag: W/"hash值"
+        Last-Modified: Tue, 21 Mar 2017 11:51:33 GMT
+第二次请求：
+请求头：
+        If-Modified-Since: Tue, 21 Mar 2017 11:51:33 GMT
+        If-None-Match: W/"hash值"
+响应头：
+        Cache-Control: public, max-age=0
+        Last-Modified: Tue, 21 Mar 2017 11:51:33 GMT
+        ETAG: W/"hash值"
+```
+* Cache-Control(1.1 max-age)和Expires(1.0)首部指定过期日期，这两个是响应首部，只有当缓存到期了，才需要进行再验证。
+```
+Cache-Control: max-age，使用的是相对日期，http1.1
+
+```
 ## 遇到的新鲜
 * web beacon,即web bug，主要用于追踪信息，用于数据统计。使用express实现了一把，获取web bug所在页面，以及用户的userAgent
 
