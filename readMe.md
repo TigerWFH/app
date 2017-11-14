@@ -149,9 +149,16 @@ webpack中import的本质是什么？代码拷贝？
 ```
 * Cache-Control(1.1 max-age)和Expires(1.0)首部指定过期日期，这两个是响应首部，只有当缓存到期了，才需要进行再验证。
 ```
-Cache-Control: max-age，使用的是相对日期，http1.1
-
+Cache-Control: max-age，使用的是相对日期，http1.1 0表示每次都要请求服务器，有效时长
+Cache-Control: s-maxage，使用的是相对日期，http1.1
+Cache-Control: max-stable=s，缓存可以提供随意过期的文件；如果指定参数s，在这段时间内，文档就不能过期
+Cache-Control: min-fresh=s
+Cache-Control: no-Store，缓存应该尽快从存储器中删除文档的所有痕迹
+Cache-Control: no-Cache，缓存需要经过新鲜度验证，才能提供缓存给UA
+Cache-Control: must-revalidate，
+Expires: 指定过期日期
 ```
+![示意图](./src/common/res/images/cache-control.png)
 ## 遇到的新鲜
 * web beacon,即web bug，主要用于追踪信息，用于数据统计。使用express实现了一把，获取web bug所在页面，以及用户的userAgent
 

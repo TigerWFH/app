@@ -25,7 +25,15 @@ app.get('/v1/beacon/a.gif', (req, res, next)=>{
 	});
 	return;
 });
-app.use(express.static('./static'));//设置静态文件路径
+
+app.use(express.static('./static', {
+	setHeaders: function setHeader(res, path, stat){
+		let headers = {
+			'Cache-Control': 'no-Cache'
+		};
+		res.set(headers)
+	}
+}));//设置静态文件路径
 app.post('/v1/upload', multer({ dest: 'mock/upload/' }).array('video', 2), (req, res, next) => {
 	console.log('req.body--->', req.body);
 	console.log('req.file--->', req.file);
