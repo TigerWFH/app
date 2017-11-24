@@ -12,7 +12,7 @@ const exec = (command, extraEnv) =>
     });
 console.log('Building CommonJS modules ...');
 
-exec('webpack', {
+exec('webpack --hide-modules --config webpack.config.js', {
     NODE_ENV: 'production'
 });
 
