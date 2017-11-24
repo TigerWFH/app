@@ -10,7 +10,8 @@
     "server": "export NODE_ENV=development && node server.js",
     "build": "export NODE_ENV=development && webpack --watch --hide-modules --colors",
     "buildprd": "export NODE_ENV=production && webpack --hide-modules --colors",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "size": "node ./scripts/build.js"
   },
   "keywords": [
     "js",
@@ -47,7 +48,9 @@
     "cookie-parser": "^1.4.3",
     "express": "^4.16.2",
     "express-session": "^1.15.6",
+    "gzip-size": "^4.1.0",
     "multer": "^1.3.0",
+    "pretty-bytes": "^4.0.2",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
