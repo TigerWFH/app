@@ -306,3 +306,101 @@ ReactDOM.render(elem, document.getElementById('main'));
 ```
 
 [官网资料](https://reactjs.org/docs/context.html)
+# react的生命周期
+```
+class MyApp extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      test: 0
+    };
+  }
+  state = {
+    test: 1
+  };
+
+  componentWillMount(){
+    console.group('声明周期:');
+    console.log('componentWillMount');
+  }
+  componentDidMount(){
+    console.log('componentDidMount');
+  }
+  componentWillReceiveProps(nextProps){
+    console.log('componentWillReceiveProps');
+  }
+
+  shouldComponentUpdate(nextprops, nextstate){
+    console.log('shouldComponentUpdate');
+    return true;
+  }
+
+  componentWillUpdate(){
+    console.log('componentWillComponent');
+  }
+  componentDidUpdate(){
+    console.log('componentDidComponent');
+  }
+  componentWillUnmount(){
+    console.log('componentWillUnmount');
+  }
+
+  onClick = ()=>{
+    this.setState({
+      test: 1
+    });
+  }
+
+  render(){
+    return (
+      <div>
+        <button onClick={this.onClick}>
+          setState
+        </button>
+        {'MyApp:' + this.state.test}
+      </div>
+    )
+  }
+}
+
+let elem = <MyApp></MyApp>
+
+ReactDOM.render(elem, document.getElementById('main'));
+```
+
+`总结：`
+
+  1、首次触发顺序：constructor-->componentWillMount-->render-->componentDidMount-->componentWillUnmount
+
+  2、父组件传递props：componentWillReceiveProps(容器组件传递props触发)-->shouldComponentUpdate(setState触发)-->componentWillUpdate-->render-->componentDidUpdate-->componentWillUnmount
+
+  3、Provider(包括初始化的store)并未触发componentWillReceiveProps和shouldComponentUpdate
+  
+  4、Router并未触发componentWillReceiveProps和shouldComponentUpdate
+
+  5、只有注入的props属性发生变化，才会触发componentWillReceiveProps
+
+  6、setState会触发shouldComponentUpdate
+  
+  `注意`：constructor函数中的this.state的优先级低于class中的state赋值，个人感觉：这现象和对象初始化时，constructor是第一个被调用的函数有点小冲突即
+  ```
+  class App extends React.Component{
+    constructor(props){
+      super(props);
+      this.state = {
+        name: 'monkey'
+      };
+    }
+    state = {
+      name: 'cat'
+    }
+    render(){
+      return (
+        <div>
+        {this.state.name}
+        </div>
+      )
+    }
+  }
+  结果输出是:monkey
+  ```
