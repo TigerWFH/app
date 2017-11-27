@@ -237,3 +237,70 @@ App1.contextTypes = {
     `问题`：state的更新和context的更新可能产生的逻辑问题，需要优化的点
     
     3、组件(准确的说是对应容器的subtree)只有定义了对应的`contextTypes`属性，才能通过this.context访问对应的context值。
+* 测试代码
+```
+import * as React from 'react';
+import PropTypes from 'prop-types';
+import * as ReactDOM from 'react-dom';
+
+
+function Child(props, context) {
+  console.log('child context-->', context)
+  return (
+    <div className={css["app"]}>
+      {props.children}
+    </div>
+  )
+}
+
+Child.contextTypes = {
+  router: PropTypes.object,
+  monkey: PropTypes.number
+};
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  static childContextTypes = {
+    router: PropTypes.object.isRequired,
+    monkey: PropTypes.number.isRequired
+  };
+
+  getChildContext() {
+    console.log('getChildContext: update context');
+    return {
+      router: {
+        monkey: 'monkey'
+      },
+      monkey: 123
+    }
+  }
+
+  componentDidMount(){
+    console.log('update state...');
+    this.setState({
+      test: 1
+    })
+  }
+
+  render() {
+    console.log('router-default-context: ', this.context);
+    return (
+      <div className={css["app"]}>
+        {this.props.children}
+      </div>
+    )
+  }
+}
+
+let elem =
+  <App>
+    <Child></Child>
+    div
+  </App>
+
+
+ReactDOM.render(elem, document.getElementById('main'));
+```
