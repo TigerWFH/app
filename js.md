@@ -319,6 +319,13 @@ JSON Schema定义了如何基于JSON格式描述JSON数据结构的规范，进�
         document.body.clientHeight
         通过对比这几个值在四个浏览器中的值，inner***包括滚动条宽度，outer***是窗体大小，client***是viewport大小，且viewport+scrollbar = inner***，且scrollbar宽度是17px。
 
+# SGHTML、HTML、XML文档中的字符实体(character entity)
+
+        In SGML, HTML and XML documents, the logical constructs known as character data and attribute values consist of sequences of characters, in which each character can manifest directly (representing itself), or can be represented by a series of characters called a character reference, of which there are two types: a numeric character reference and a character entity reference. This article lists the character entity references that are valid in HTML and XML documents.
+
+        A character entity reference refers to the content of a named entity.
+[character entity](https://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references)
+
 ## 移动端知识点
 * 单位：
 
