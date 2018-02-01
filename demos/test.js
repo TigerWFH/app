@@ -1,16 +1,25 @@
-function child() {
-    console.log("child pid--->", process.pid);
-    process.on("message", (msg) => {
-        console.log("child--->", msg);
-        if (msg === 9) {
-            process.disconnect();
-        }
-    });
-    let i = 0;
-    while(i < 10) {
-        process.send(i);
-        i++;
-    }
-}
+let { normalize, schema } = require('normalizr');
 
-child();
+let origin = {
+    "id": "123",
+    "author": {
+        "id": "1",
+        "name": "Paul"
+    },
+    "title": "My awesome blog post",
+    "comments": [
+        {
+            "id": "324",
+            "commenter": {
+                "id": "2",
+                "name": "Nicole"
+            }
+        }
+    ]
+};
+
+const user = new schema.Entity('title');
+
+const normalizedData = normalize(origin, user);
+
+console.log('--->', normalizedData);
